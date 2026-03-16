@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import { notFound } from 'next/navigation'
 
 const PRODUCT_NAV = [
@@ -224,7 +224,8 @@ const BLOG_POSTS: Record<string, {
 // PAGE
 // ─────────────────────────────────────────────
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params: paramsPromise }: { params: Promise<{ slug: string }> }) {
+  const params = use(paramsPromise)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
