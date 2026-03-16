@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -235,7 +235,7 @@ function useInView(threshold = 0.15) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const obs = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect() } }, { threshold })
+    const obs = new IntersectionObserver(([entry]) => { if (entry?.isIntersecting) { setInView(true); obs.disconnect() } }, { threshold })
     obs.observe(el)
     return () => obs.disconnect()
   }, [threshold])
@@ -576,26 +576,27 @@ export default function KingdtaPage() {
             </div>
 
             {/* Active product display */}
+            {(() => { const prod = PRODUCTS[activeProduct]; if (!prod) return null; return (
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${productsRef.inView ? 'anim-fade-in delay-300' : 'opacity-0'}`}>
-              {/* Image —?full natural ratio, no crop */}
+              {/* Image — full natural ratio, no crop */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-md mx-auto bg-black">
                 <img
-                  src={PRODUCTS[activeProduct].img}
-                  alt={PRODUCTS[activeProduct].model}
+                  src={prod.img}
+                  alt={prod.model}
                   className="w-full h-auto transition-all duration-300"
                 />
                 <span className="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                  {PRODUCTS[activeProduct].badge}
+                  {prod.badge}
                 </span>
               </div>
               {/* Info */}
               <div>
-                <p className="text-green-600 text-sm font-semibold uppercase tracking-wider mb-2">{PRODUCTS[activeProduct].model}</p>
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">{PRODUCTS[activeProduct].name}</h3>
-                <p className="text-gray-500 text-base leading-relaxed mb-6">{PRODUCTS[activeProduct].desc}</p>
+                <p className="text-green-600 text-sm font-semibold uppercase tracking-wider mb-2">{prod.model}</p>
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">{prod.name}</h3>
+                <p className="text-gray-500 text-base leading-relaxed mb-6">{prod.desc}</p>
 
                 <div className="grid grid-cols-2 gap-3 mb-6">
-                  {PRODUCTS[activeProduct].specs.map(s => (
+                  {prod.specs.map(s => (
                     <div key={s} className="flex items-center gap-2 bg-gray-50 rounded-lg px-4 py-3 border border-gray-100">
                       <svg className="w-4 h-4 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" /></svg>
                       <span className="text-gray-700 text-sm font-medium">{s}</span>
@@ -606,7 +607,7 @@ export default function KingdtaPage() {
                 <div className="mb-8">
                   <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">Typical Applications</p>
                   <div className="flex flex-wrap gap-2">
-                    {PRODUCTS[activeProduct].applications.map(a => (
+                    {prod.applications.map(a => (
                       <span key={a} className="bg-green-50 text-green-700 text-xs font-medium px-3 py-1.5 rounded-full border border-green-100">{a}</span>
                     ))}
                   </div>
@@ -618,6 +619,7 @@ export default function KingdtaPage() {
                 </button>
               </div>
             </div>
+            )})()}
           </div>
         </section>
 

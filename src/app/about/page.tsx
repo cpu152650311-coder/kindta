@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -13,7 +13,7 @@ function useInView(threshold = 0.15) {
     const el = ref.current
     if (!el) return
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect() } },
+      ([entry]) => { if (entry?.isIntersecting) { setInView(true); obs.disconnect() } },
       { threshold }
     )
     obs.observe(el)

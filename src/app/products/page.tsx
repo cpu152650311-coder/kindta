@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -9,7 +9,7 @@ function useInView(threshold = 0.1) {
     const el = ref.current
     if (!el) return
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect() } },
+      ([entry]) => { if (entry?.isIntersecting) { setInView(true); obs.disconnect() } },
       { threshold }
     )
     obs.observe(el)
@@ -187,6 +187,7 @@ export default function ProductsPage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeProduct, setActiveProduct] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
+  const activeProd = PRODUCTS[activeProduct] ?? PRODUCTS[0]!
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -430,6 +431,7 @@ export default function ProductsPage() {
             </div>
 
             {/* Detail panel */}
+            {(() => { const prod = PRODUCTS[activeProduct]; if (!prod) return null; return (
             <div className={`bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm ${detailRef.inView ? 'anim-fade-in delay-200' : 'opacity-0'}`} key={activeProduct}>
               <div className="grid grid-cols-1 lg:grid-cols-5">
                 {/* Left —?image (2/5 width, compact) */}
@@ -497,6 +499,7 @@ export default function ProductsPage() {
                 </div>
               </div>
             </div>
+            )})()}
 
             {/* Navigation between products */}
             <div className={`flex items-center justify-between mt-6 ${detailRef.inView ? 'anim-fade-up delay-300' : 'opacity-0'}`}>
@@ -506,7 +509,7 @@ export default function ProductsPage() {
                 className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-green-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" /></svg>
-                {activeProduct > 0 ? PRODUCTS[activeProduct - 1].model : 'Previous'}
+                {activeProduct > 0 ? PRODUCTS[activeProduct - 1]?.model ?? 'Previous' : 'Previous'}
               </button>
               <span className="text-gray-300 text-sm">{activeProduct + 1} / {PRODUCTS.length}</span>
               <button
@@ -514,7 +517,7 @@ export default function ProductsPage() {
                 disabled={activeProduct === PRODUCTS.length - 1}
                 className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-green-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                {activeProduct < PRODUCTS.length - 1 ? PRODUCTS[activeProduct + 1].model : 'Next'}
+                {activeProduct < PRODUCTS.length - 1 ? PRODUCTS[activeProduct + 1]?.model ?? 'Next' : 'Next'}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
               </button>
             </div>
@@ -614,7 +617,7 @@ export default function ProductsPage() {
             <div className="p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h3 className="text-gray-900 font-bold text-xl mb-1">Request a Sample —?{prod.model}</h3>
+                  <h3 className="text-gray-900 font-bold text-xl mb-1">Request a Sample — {activeProd.model}</h3>
                   <p className="text-gray-500 text-sm">We respond within 24 hours.</p>
                 </div>
                 <button onClick={() => setModalOpen(false)} className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors">
@@ -628,8 +631,8 @@ export default function ProductsPage() {
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_autoresponse" value="Thank you for contacting Kingdta. We have received your inquiry and will respond within 24 hours." />
                 <input type="text" name="_honey" style={{display:'none'}} />
-                <input type="hidden" name="_subject" value={`Sample Request: ${prod.model} from Kingdta Website`} />
-                <input type="hidden" name="product" value={prod.model} />
+                <input type="hidden" name="_subject" value={`Sample Request: ${activeProd.model} from Kingdta Website`} />
+                <input type="hidden" name="product" value={activeProd.model} />
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">Name</label>

@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -9,7 +9,7 @@ function useInView(threshold = 0.1) {
     const el = ref.current
     if (!el) return
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); obs.disconnect() } },
+      ([entry]) => { if (entry?.isIntersecting) { setInView(true); obs.disconnect() } },
       { threshold }
     )
     obs.observe(el)
@@ -112,7 +112,7 @@ export default function BlogListPage() {
 
   const categories = ['All', 'Product Deep Dive', 'Case Study']
   const filtered = activeCategory === 'All' ? POSTS : POSTS.filter(p => p.category === activeCategory)
-  const featured = POSTS[0]
+  const featured = POSTS[0]!
   const rest = filtered.filter(p => p.slug !== featured.slug || activeCategory !== 'All')
 
   return (
