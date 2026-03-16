@@ -5,9 +5,13 @@ import { Geist } from "next/font/google";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-	title: "Kindta",
-	description: "Kindta - Next.js Project",
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
+	title: "Kingdta | Sensor Solutions",
+	description: "Kingdta Electronics - Precision Sensor Solutions for IoT & Industrial Applications",
+	icons: [
+		{ rel: "icon", url: "/favicon.png" },
+		{ rel: "shortcut icon", url: "/favicon.png" },
+		{ rel: "apple-touch-icon", url: "/favicon.png" },
+	],
 };
 
 const geist = Geist({
