@@ -23,7 +23,7 @@ const PRODUCT_MENU = [
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -174,13 +174,11 @@ export default function ContactPage() {
         }
       `}</style>
 
-      {/* 鈹€鈹€ NAVBAR 鈹€鈹€ */}
+      {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>            <div className="relative group">
@@ -263,7 +261,7 @@ export default function ContactPage() {
 
       <main className="pt-16">
 
-        {/* 鈹€鈹€ HERO 鈹€鈹€ */}
+        {/* ── HERO ── */}
         <section className="relative overflow-hidden bg-white py-20 lg:py-28">
           <div className="absolute inset-0 hero-pattern opacity-50" />
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-green-50/80 to-transparent" />
@@ -305,7 +303,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ MAIN: FORM + ADDRESSES 鈹€鈹€ */}
+        {/* ── MAIN: FORM + ADDRESSES ── */}
         <section className="py-20 bg-gray-50">
           <div ref={formRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
@@ -445,7 +443,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ BANNER 鈹€鈹€ */}
+        {/* ── BANNER ── */}
         <section className="relative h-56 overflow-hidden">
           <img src="/5.1.jpg" alt="Kingdta Factory" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/60" />
@@ -458,7 +456,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FAQ 鈹€鈹€ */}
+        {/* ── FAQ ── */}
         <section className="py-20 bg-white">
           <div ref={faqRef.ref} className="max-w-3xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-12 ${faqRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -492,7 +490,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FOOTER 鈹€鈹€ */}
+        {/* ── FOOTER ── */}
         <footer className="bg-gray-950 pt-16 pb-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">

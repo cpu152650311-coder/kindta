@@ -23,7 +23,7 @@ const PRODUCT_MENU = [
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -34,6 +34,17 @@ const PRODUCT_MENU = [
 
 const POSTS = [
   {
+    slug: 'how-vibration-sensors-extend-iot-battery-life',
+    title: 'How Vibration Sensors Extend IoT Battery Life',
+    excerpt: 'Mechanical vibration sensors help IoT devices achieve ultra-low power consumption by enabling wake-up detection without continuous MCU operation.',
+    date: 'Mar 17, 2026',
+    readTime: '8 min read',
+    category: 'Application Guide',
+    cover: '/blog-pic/vibration-iot-intro.jpeg',
+    tags: ['IoT', 'Battery Life', 'Vibration Sensor'],
+    featured: true,
+  },
+  {
     slug: 'bd4101a-c04-microwave-radar-module-smart-lighting',
     title: 'BD4101A-C04 Microwave Radar Module for Smart Lighting and Presence Detection',
     excerpt: 'See how the BD4101A-C04 helps smart lighting, panels, locks, and automation devices achieve stable motion sensing with compact radar PCBA design.',
@@ -42,7 +53,7 @@ const POSTS = [
     category: 'Application Guide',
     cover: '/radar/bd4101a-front-pcba.png',
     tags: ['Radar', 'Smart Lighting', 'Presence Detection'],
-    featured: true,
+    featured: false,
   },
   {
     slug: 'wt4104b-c01-blind-spot-detection-radar-ebike-safety',
@@ -54,17 +65,6 @@ const POSTS = [
     cover: '/radar/wt4104b-front-pcba.png',
     tags: ['Radar', 'BSD', 'E-Bike Safety'],
     featured: false,
-  },
-  {
-    slug: 'how-vibration-sensors-extend-iot-battery-life',
-    title: 'How Vibration Sensors Extend IoT Battery Life',
-    excerpt: 'Mechanical vibration sensors help IoT devices achieve ultra-low standby power by enabling event-driven wake-up instead of continuous motion monitoring.',
-    date: 'Mar 17, 2026',
-    readTime: '6 min read',
-    category: 'Application Guide',
-    cover: '/blog-pic/KD1901S.jpg',
-    tags: ['IoT', 'Battery Life', 'Vibration Sensor'],
-    featured: true,
   },
   {
     slug: 'kd1901s',
@@ -171,9 +171,7 @@ export default function BlogListPage() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>

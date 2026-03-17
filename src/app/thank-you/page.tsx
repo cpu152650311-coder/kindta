@@ -5,7 +5,7 @@ export default function ThankYouPage() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-gray-50 flex flex-col items-center justify-center px-6">
       {/* Logo */}
       <a href="/" className="mb-12">
-        <img src="/sitelogo22.png" alt="Kingdta" className="h-10 object-contain" />
+        <img src="/header-logo.png" alt="Kingdta" className="h-10 object-contain" />
       </a>
 
       {/* Card */}
@@ -17,7 +17,7 @@ export default function ThankYouPage() {
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-3">感谢您的询盘！</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-3">Thank You for Your Inquiry!</h1>
         <p className="text-gray-500 text-sm leading-relaxed mb-2">
           Thank you for reaching out to Kingdta.
         </p>

@@ -1,10 +1,13 @@
 'use client'
 
+import { JsonLd } from '@/components/seo/json-ld'
+import { PAGE_METADATA } from '@/lib/page-metadata'
+import { pageStructuredData } from '@/lib/structured-data'
 import { useEffect, useRef, useState } from 'react'
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // DATA
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -18,7 +21,7 @@ const PRODUCT_MENU = [
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -231,9 +234,9 @@ const BLOGS = [
 
 const CERTS = ['ISO 9001', 'RoHS', 'IPC-A-610', 'CE', 'MES Tracking']
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // HELPERS
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
@@ -265,9 +268,9 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // PAGE
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 export default function KingdtaPage() {
   const [scrolled, setScrolled] = useState(false)
@@ -299,12 +302,13 @@ export default function KingdtaPage() {
   const faqs = [
     { q: 'How is your core service different from a standard PCBA factory?', a: 'We provide a true one-stop service, from sensor selection and customized solution design to PCBA manufacturing. You don\'t need to coordinate separate sensor suppliers and board manufacturers. We enable deep integration from the start to optimize product performance and cost.' },
     { q: 'What specific support can you offer during the sensor solution design phase?', a: 'We provide sensor recommendations based on your application, reference circuit design, system-level simulation for sensor-MCU integration, and functional prototyping to ensure a feasible and optimized solution.' },
-    { q: 'Can you handle complex boards that integrate multiple sensors?', a: 'Absolutely. Our production lines support 01005 components, 0.25mm fine pitch, and 卤0.03mm placement accuracy, specialized for high-density, sensor-rich PCB assemblies.' },
+    { q: 'Can you handle complex boards that integrate multiple sensors?', a: 'Absolutely. Our production lines support 01005 components, 0.25mm fine pitch, and ±0.03mm placement accuracy, specialized for high-density, sensor-rich PCB assemblies.' },
     { q: 'How do you ensure quality consistency in mass production?', a: 'We implement end-to-end quality control. In addition to standard SMT inspections (SPI/AOI/X-Ray), we perform full functional testing (FCT) on all assembled boards to verify sensor accuracy, communication, and power performance.' },
   ]
 
   return (
     <>
+      <JsonLd data={pageStructuredData({ ...PAGE_METADATA.home, type: 'WebPage' })} />
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(28px); }
@@ -362,13 +366,11 @@ export default function KingdtaPage() {
         }
       `}</style>
 
-      {/* 鈹€鈹€ NAVBAR 鈹€鈹€ */}
+      {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-green-700">Home</a>            {/* Products dropdown */}
@@ -460,7 +462,7 @@ export default function KingdtaPage() {
 
       <main className="pt-16">
 
-        {/* 鈹€鈹€ HERO 鈹€鈹€ */}
+        {/* ── HERO ── */}
         <section className="relative overflow-hidden bg-white min-h-[90vh] flex items-center">
           <div className="absolute inset-0 hero-pattern opacity-60" />
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-50 to-transparent" />
@@ -531,7 +533,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ STATS BAR 鈹€鈹€ */}
+        {/* ── STATS BAR ── */}
         <section className="bg-green-700 py-10">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {STATS.map((s) => (
@@ -545,7 +547,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ SERVICES 鈹€鈹€ */}
+        {/* ── SERVICES ── */}
         <section id="solutions" className="py-24 bg-gray-50">
           <div ref={servicesRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${servicesRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -572,7 +574,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ PRODUCTS 鈹€鈹€ */}
+        {/* ── PRODUCTS ── */}
         <section id="products" className="py-24 bg-white">
           <div ref={productsRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${productsRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -597,7 +599,7 @@ export default function KingdtaPage() {
             {/* Active product display */}
             {(() => { const prod = PRODUCTS[activeProduct]; if (!prod) return null; return (
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${productsRef.inView ? 'anim-fade-in delay-300' : 'opacity-0'}`}>
-              {/* Image 鈥?full natural ratio, no crop */}
+              {/* Image — full natural ratio, no crop */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-md mx-auto bg-black">
                 <img
                   src={prod.img}
@@ -642,7 +644,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ SENSOR VISUAL BANNER 鈹€鈹€ */}
+        {/* ── SENSOR VISUAL BANNER ── */}
         <section className="relative h-[420px] overflow-hidden">
           <img src="/1.1.6.1-1.jpg" alt="Sensor Technology" className="w-full h-full object-cover object-right" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/10" />
@@ -665,7 +667,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ INDUSTRIES 鈹€鈹€ */}
+        {/* ── INDUSTRIES ── */}
         <section className="py-24 bg-gray-50">
           <div ref={industriesRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${industriesRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -694,7 +696,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ PCBA SERVICE 鈹€鈹€ */}
+        {/* ── PCBA SERVICE ── */}
         <section id="pcba" className="py-24 bg-white">
           <div ref={pcbaRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-start ${pcbaRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -731,7 +733,7 @@ export default function KingdtaPage() {
                   <img src="/1.1.jpg" alt="SMT Factory Floor" className="w-full h-auto" />
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                  {[['8+', 'SMT Lines'], ['卤0.03mm', 'Placement Acc.'], ['ISO 9001', 'Certified']].map(([v, k]) => (
+                  {[['8+', 'SMT Lines'], ['±0.03mm', 'Placement Acc.'], ['ISO 9001', 'Certified']].map(([v, k]) => (
                     <div key={k} className="bg-green-50 rounded-xl p-3 border border-green-100">
                       <p className="text-green-700 font-bold text-sm">{v}</p>
                       <p className="text-gray-500 text-xs mt-0.5">{k}</p>
@@ -743,7 +745,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ PROCESS 鈹€鈹€ */}
+        {/* ── PROCESS ── */}
         <section id="about" className="py-24 bg-green-700 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 hero-pattern" />
           <div ref={processRef.ref} className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -773,10 +775,10 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ PARTNERS 鈹€鈹€ */}
+        {/* ── PARTNERS ── */}
         <section className="py-16 bg-gray-50 border-y border-gray-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">鍚堜綔浼欎即 &amp; 瀹㈡埛</p>
+            <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">Partners &amp; Clients</p>
             <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
               {[1,2,3,4,5,6,7,8,9,10].map(n => (
                 <div key={n} className="w-24 h-16 lg:w-28 lg:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
@@ -790,7 +792,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ TESTIMONIALS 鈹€鈹€ */}
+        {/* ── TESTIMONIALS ── */}
         <section className="py-24 bg-white">
           <div ref={testimonialsRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${testimonialsRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -820,7 +822,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FAQ 鈹€鈹€ */}
+        {/* ── FAQ ── */}
         <section className="py-24 bg-gray-50">
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-14">
@@ -850,7 +852,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ BLOG 鈹€鈹€ */}
+        {/* ── BLOG ── */}
         <section className="py-24 bg-white">
           <div ref={blogRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14 ${blogRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -885,7 +887,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ CTA 鈹€鈹€ */}
+        {/* ── CTA ── */}
         <section className="py-24 relative overflow-hidden">
           <img src="/D.1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/75" />
@@ -910,7 +912,7 @@ export default function KingdtaPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FOOTER 鈹€鈹€ */}
+        {/* ── FOOTER ── */}
         <footer className="bg-gray-950 pt-16 pb-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
@@ -980,7 +982,7 @@ export default function KingdtaPage() {
         </footer>
       </main>
 
-      {/* 鈹€鈹€ CONTACT MODAL 鈹€鈹€ */}
+      {/* ── CONTACT MODAL ── */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={(e) => e.target === e.currentTarget && setModalOpen(false)}>
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden anim-fade-up">

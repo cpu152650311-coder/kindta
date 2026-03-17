@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // HELPERS
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
@@ -39,16 +39,16 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // DATA
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 const PRODUCT_MENU = [
   {
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -93,7 +93,7 @@ const CAPABILITIES = [
     ),
     title: 'Co-design & System Integration',
     desc: 'Our core advantage lies in co-designing the sensor and PCBA as one unified system, optimizing for performance, cost, and manufacturability from the very first design review.',
-    points: ['Sensor鈥揚CBA co-optimization', 'Signal integrity by design', 'BOM cost engineering', 'Single-source accountability'],
+    points: ['Sensor-PCBA co-optimization', 'Signal integrity by design', 'BOM cost engineering', 'Single-source accountability'],
   },
 ]
 
@@ -145,9 +145,9 @@ const TIMELINE = [
   { year: 'Today', title: 'Global Reach', desc: 'Serving 999+ clients across 30+ countries with ISO 9001 certified processes, MES-tracked production, and dedicated engineering support.' },
 ]
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // PAGE
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 export default function AboutPage() {
   const [scrolled, setScrolled] = useState(false)
@@ -202,13 +202,11 @@ export default function AboutPage() {
         }
       `}</style>
 
-      {/* 鈹€鈹€ NAVBAR 鈹€鈹€ */}
+      {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>            <div className="relative group">
@@ -295,7 +293,7 @@ export default function AboutPage() {
 
       <main className="pt-16">
 
-        {/* 鈹€鈹€ HERO 鈹€鈹€ */}
+        {/* ── HERO ── */}
         <section className="relative overflow-hidden bg-white py-24 lg:py-32">
           <div className="absolute inset-0 hero-pattern opacity-50" />
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-green-50/80 to-transparent" />
@@ -356,11 +354,11 @@ export default function AboutPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-green-600 rounded-xl p-4 text-white">
                     <p className="font-bold text-sm mb-1">Our Vision</p>
-                    <p className="text-green-100 text-xs leading-relaxed">Leading global provider of intelligent sensing & hardware solutions.</p>
+                    <p className="text-green-100 text-xs leading-relaxed">To become a leading, trusted, and enduring global technology company in sensing and electronics manufacturing.</p>
                   </div>
                   <div className="bg-gray-900 rounded-xl p-4 text-white">
                     <p className="font-bold text-sm mb-1">Our Mission</p>
-                    <p className="text-gray-300 text-xs leading-relaxed">Empowering clients with reliable, integrated, accessible technology.</p>
+                    <p className="text-gray-300 text-xs leading-relaxed">Safeguard partner success. With precision sensing and smart manufacturing, empower intelligent connectivity for everything.</p>
                   </div>
                 </div>
               </div>
@@ -368,7 +366,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ STATS 鈹€鈹€ */}
+        {/* ── STATS ── */}
         <section className="bg-green-700 py-12">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {STATS.map((s) => (
@@ -383,7 +381,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ CORE CAPABILITIES 鈹€鈹€ */}
+        {/* ── CORE CAPABILITIES ── */}
         <section className="py-24 bg-gray-50">
           <div ref={capRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${capRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -413,7 +411,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ WHY PARTNER 鈹€鈹€ */}
+        {/* ── WHY PARTNER ── */}
         <section className="py-24 bg-white">
           <div ref={whyRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${whyRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -448,7 +446,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FACTORY VISUAL BANNER 鈹€鈹€ */}
+        {/* ── FACTORY VISUAL BANNER ── */}
         <section className="relative h-64 overflow-hidden">
           <img src="/5.1.jpg" alt="Reflow Oven Manufacturing" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
@@ -461,7 +459,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ COMPANY JOURNEY 鈹€鈹€ */}
+        {/* ── COMPANY JOURNEY ── */}
         <section className="py-24 bg-gray-50">
           <div ref={timelineRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${timelineRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -492,7 +490,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ CERTIFICATIONS 鈹€鈹€ */}
+        {/* ── CERTIFICATIONS ── */}
         <section className="py-16 bg-white border-y border-gray-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <p className="text-center text-gray-400 text-xs font-semibold uppercase tracking-widest mb-8">Quality Certifications & Standards</p>
@@ -519,10 +517,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ PARTNERS 鈹€鈹€ */}
+        {/* ── PARTNERS ── */}
         <section className="py-16 bg-gray-50 border-y border-gray-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">鍚堜綔浼欎即 &amp; 瀹㈡埛</p>
+            <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-10">Partners &amp; Clients</p>
             <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
               {[1,2,3,4,5,6,7,8,9,10].map(n => (
                 <div key={n} className="w-24 h-16 lg:w-28 lg:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
@@ -536,7 +534,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ ADDRESS 鈹€鈹€ */}
+        {/* ── ADDRESS ── */}
         <section className="py-24 bg-gray-50">
           <div ref={addressRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${addressRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -593,7 +591,7 @@ export default function AboutPage() {
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">Room 111, Xinbaoyi Industry & Trade Building, No. 29, Third Industrial Zone, Houting Community, Shajing Subdistrict, Bao'an District, Shenzhen, Guangdong, China</p>
                 <div className="grid grid-cols-2 gap-3 pt-5 border-t border-gray-100">
-                  {[['SMT Lines', '8+'], ['Placement Acc.', '卤0.03mm'], ['Max Layers', '20L'], ['Certifications', 'ISO 9001']].map(([k, v]) => (
+                  {[['SMT Lines', '8+'], ['Placement Acc.', '±0.03mm'], ['Max Layers', '20L'], ['Certifications', 'ISO 9001']].map(([k, v]) => (
                     <div key={k} className="bg-green-50 rounded-xl p-3">
                       <p className="text-gray-400 text-xs mb-0.5">{k}</p>
                       <p className="text-green-700 font-bold text-sm">{v}</p>
@@ -605,7 +603,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ CTA 鈹€鈹€ */}
+        {/* ── CTA ── */}
         <section className="py-24 bg-gray-900 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 hero-pattern" />
           <div className="absolute top-0 left-0 w-96 h-96 bg-green-600 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20" />
@@ -629,7 +627,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FOOTER 鈹€鈹€ */}
+        {/* ── FOOTER ── */}
         <footer className="bg-gray-950 pt-16 pb-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
@@ -686,7 +684,7 @@ export default function AboutPage() {
         </footer>
       </main>
 
-      {/* 鈹€鈹€ CONTACT MODAL 鈹€鈹€ */}
+      {/* ── CONTACT MODAL ── */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={(e) => e.target === e.currentTarget && setModalOpen(false)}>
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden anim-fade-up">

@@ -8,7 +8,7 @@ const PRODUCT_MENU = [
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -32,6 +32,8 @@ const BLOG_POSTS: Record<string, {
   coverImg: string
   productLink?: string
   pdfLink?: string
+  cta1?: { text: string; linkText: string; href: string }
+  cta2?: { text: string; linkText: string; href: string }
   sections: Array<{ type: string; content?: string; src?: string; alt?: string; caption?: string; headers?: string[]; rows?: string[][] }>
 }> = {
   'bd4101a-c04-microwave-radar-module-smart-lighting': {
@@ -124,44 +126,84 @@ const BLOG_POSTS: Record<string, {
   'how-vibration-sensors-extend-iot-battery-life': {
     slug: 'how-vibration-sensors-extend-iot-battery-life',
     title: 'How Vibration Sensors Extend IoT Battery Life',
-    subtitle: 'Event-driven wake-up detection helps battery-powered IoT devices stay asleep longer, cut standby current, and operate for months or years without frequent battery changes.',
+    subtitle: 'Mechanical vibration sensors help IoT devices achieve ultra-low power consumption by enabling wake-up detection without continuous MCU operation. Learn how vibration sensors extend IoT battery life.',
     date: 'Mar 17, 2026',
-    readTime: '6 min read',
+    readTime: '8 min read',
     category: 'Application Guide',
-    coverImg: '/blog-pic/KD1901S.jpg',
-    productLink: '/products#kd1901s',
+    coverImg: '/blog-pic/vibration-iot-intro.jpeg',
+    productLink: '/sensor-modules',
+    cta1: { text: 'Looking for ultra-low-power vibration sensors for your IoT device?', linkText: 'View Vibration Sensors', href: '/sensor-modules' },
+    cta2: { text: 'Explore our vibration sensor solutions or contact our engineering team for technical support.', linkText: 'Contact Us', href: '/contact' },
     sections: [
-      { type: 'paragraph', content: 'Battery life is one of the most important design targets in modern IoT hardware. Products such as asset trackers, smart locks, wearables, wireless alarms, and remote monitoring nodes are often expected to run for months or even years on a single battery. That goal becomes much harder when the system must monitor motion continuously.' },
-      { type: 'paragraph', content: 'Traditional motion sensing solutions often rely on active electronic components such as MEMS accelerometers or gyroscopes. These devices can provide rich data, but they also consume power all the time. Mechanical vibration sensors offer a different approach: they work as passive hardware triggers, allowing the MCU and wireless module to stay asleep until real movement happens.' },
-      { type: 'image', src: '/blog-pic/KD1901S.jpg', alt: 'Ultra-low-power vibration sensor for IoT wake-up', caption: 'Mechanical vibration sensors are a practical choice for ultra-low-power wake-up designs.' },
-      { type: 'h2', content: '1. Why Battery Life Matters So Much in IoT' },
-      { type: 'paragraph', content: 'Unlike consumer electronics connected to a charger every day, many IoT devices are deployed in places where maintenance is inconvenient or expensive. Logistics trackers may travel across cities and countries. Building sensors can be mounted in ceilings or utility cabinets. Agricultural devices may sit in outdoor fields for an entire season. In these scenarios, battery lifetime directly affects service cost, product competitiveness, and user satisfaction.' },
-      { type: 'paragraph', content: 'Engineers therefore try to reduce every source of standby current. Even a small increase in quiescent current can have a major impact on the final operating lifetime of a battery-powered product.' },
-      { type: 'h2', content: '2. The Problem with Continuous Motion Monitoring' },
-      { type: 'paragraph', content: 'Many connected devices need to detect movement, vibration, or tampering. The common solution is continuous monitoring through active motion sensors. While effective, that architecture means the sensing element remains powered during standby. For products targeting one to five years of operation from a compact battery, tens or hundreds of microamps can be a serious burden.' },
-      { type: 'paragraph', content: 'In other words, the system pays an energy cost even when nothing is happening. That is the opposite of what low-power IoT products need.' },
-      { type: 'h2', content: '3. How Mechanical Vibration Sensors Work' },
-      { type: 'paragraph', content: 'Mechanical vibration sensors operate on a simple physical principle. Inside the package, a conductive spring or metal element moves when vibration occurs. When the device is shaken, bumped, or starts moving, the internal structure briefly closes the electrical contact and generates a pulse. That pulse can be sent directly to a microcontroller interrupt pin.' },
-      { type: 'paragraph', content: 'Because the sensor is passive, it does not need continuous power to watch for movement. In standby, the power consumption is essentially zero. This is the key reason it fits event-driven IoT architectures so well.' },
-      { type: 'image', src: '/blog-pic/KD1901S-1.jpg', alt: 'Vibration sensor wake-up circuit concept', caption: 'A passive vibration sensor can wake the MCU only when movement actually occurs.' },
-      { type: 'h2', content: '4. Event-Driven Wake-Up Architecture' },
-      { type: 'paragraph', content: 'One of the most effective power-saving methods in IoT design is event-driven wake-up. Instead of sampling motion continuously, the system spends most of its time in deep sleep. The vibration sensor passively monitors for movement while the MCU and wireless module remain inactive.' },
-      { type: 'paragraph', content: 'When vibration is detected, the sensor triggers an interrupt, the MCU wakes up, and the device decides whether to log data, acquire location, or transmit an alert. This strategy dramatically lowers average current because full system activity happens only when necessary.' },
-      { type: 'h2', content: '5. Typical Use Cases' },
-      { type: 'paragraph', content: 'This design pattern is especially useful in asset tracking, smart home security, industrial monitoring, and wearable electronics. A logistics tracker can keep GPS off until the package starts moving. A door or window device can wake only when vibration suggests tampering. A battery-powered industrial node can transmit data only when abnormal machine vibration occurs.' },
-      { type: 'paragraph', content: 'In each of these applications, the goal is not to capture complex motion waveforms all day long. The goal is to detect an event efficiently and respond at the right moment.' },
-      { type: 'image', src: '/blog-pic/KD1902S-4.jpg', alt: 'IoT applications for vibration-triggered wake-up', caption: 'Event-driven wake-up is ideal for trackers, alarms, and other long-life IoT products.' },
-      { type: 'h2', content: '6. Why Designers Choose Mechanical Vibration Sensors' },
-      { type: 'paragraph', content: 'Mechanical vibration sensors offer several practical advantages. They deliver ultra-low standby power, simple circuit integration, fast response to movement, and lower system cost than many active motion-sensing alternatives. The absence of complex active electronics also supports long-term reliability in simple wake-up applications.' },
+      { type: 'h2', content: '1. Introduction' },
+      { type: 'paragraph', content: 'Battery life is one of the most critical design challenges in modern IoT devices. Many products such as asset trackers, smart locks, wearable devices, and wireless sensors are expected to operate for months or even years without frequent battery replacement.' },
+      { type: 'paragraph', content: 'However, traditional motion detection methods often rely on active electronic components such as MEMS accelerometers or gyroscopes. While these sensors provide precise motion data, they also require continuous power consumption.' },
+      { type: 'paragraph', content: 'Mechanical vibration sensors offer a simple and ultra-low-power alternative. By acting as a hardware trigger, they allow IoT systems to remain in sleep mode most of the time and wake up only when motion occurs. This approach significantly extends battery life while maintaining reliable motion detection.' },
+      { type: 'paragraph', content: 'As IoT deployments continue to expand across industries, vibration sensors are becoming an increasingly valuable component for engineers designing energy-efficient systems.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-intro.jpeg', alt: 'Mechanical vibration sensors for IoT wake-up', caption: 'Mechanical vibration sensors enable ultra-low-power IoT wake-up designs.' },
+      { type: 'h2', content: '2. Why Battery Life Is Critical in IoT Devices' },
+      { type: 'paragraph', content: 'Unlike traditional electronic devices that are connected to constant power sources, many IoT systems rely entirely on battery power.' },
+      { type: 'paragraph', content: 'These devices are often deployed in locations where frequent maintenance is impractical. In large-scale deployments, replacing batteries regularly can dramatically increase operational costs.' },
+      { type: 'paragraph', content: 'For example:' },
+      { type: 'paragraph', content: '• asset tracking devices used in logistics' },
+      { type: 'paragraph', content: '• wireless environmental sensors' },
+      { type: 'paragraph', content: '• smart building monitoring systems' },
+      { type: 'paragraph', content: '• wearable electronics' },
+      { type: 'paragraph', content: '• agricultural IoT sensors' },
+      { type: 'paragraph', content: 'In such applications, battery lifetime directly influences the success of the product.' },
+      { type: 'paragraph', content: 'Engineers often aim to design devices that can operate for one to five years on a single battery. Achieving this goal requires minimizing energy consumption across every component in the system.' },
+      { type: 'paragraph', content: 'Even small reductions in standby current can dramatically extend the operational lifetime of a device.' },
+      { type: 'paragraph', content: 'The relationship between current consumption and battery lifetime is illustrated in the figure below.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-battery.png', alt: 'Battery lifetime vs standby current', caption: 'As shown in the figure, even a small increase in standby current can significantly reduce battery lifetime in battery-powered IoT systems.' },
+      { type: 'h2', content: '3. Challenges of Continuous Motion Monitoring' },
+      { type: 'paragraph', content: 'Many IoT devices need to detect motion events such as movement, vibration, or tampering.' },
+      { type: 'paragraph', content: 'A common solution is to use electronic motion sensors such as: MEMS accelerometers, gyroscopes, and digital motion sensors.' },
+      { type: 'paragraph', content: 'These sensors provide detailed motion data and are widely used in smartphones and consumer electronics.' },
+      { type: 'paragraph', content: 'However, they also introduce a significant challenge for battery-powered devices.' },
+      { type: 'paragraph', content: 'Even in low-power modes, these sensors typically consume tens to hundreds of microamps of current in the system.' },
+      { type: 'paragraph', content: 'For devices designed to operate for years on a small battery, this level of power consumption may be unacceptable.' },
+      { type: 'paragraph', content: 'The diagram below illustrates a typical continuous motion detection architecture.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-continuous.png', alt: 'Continuous motion detection architecture', caption: 'Typical continuous motion detection architecture with active sensors.' },
+      { type: 'h2', content: '4. How Mechanical Vibration Sensors Work' },
+      { type: 'paragraph', content: 'Mechanical vibration sensors operate based on a simple physical principle. Inside the sensor, a small conductive spring or metal element moves when vibration occurs.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-sensor.jpeg', alt: 'Medium Vibration Sensor Switch', caption: 'Medium Vibration Sensor Switch' },
+      { type: 'paragraph', content: 'When the device experiences motion or vibration: the internal element moves, the electrical contacts briefly close, and a signal is generated.' },
+      { type: 'paragraph', content: 'This signal can be used to trigger an interrupt in the microcontroller.' },
+      { type: 'paragraph', content: 'Unlike electronic sensors, mechanical vibration sensors do not require continuous power to monitor motion. They act as passive switches that only generate a signal when vibration occurs.' },
+      { type: 'paragraph', content: 'Because of this passive behavior, their standby power consumption is essentially zero.' },
+      { type: 'paragraph', content: 'This makes them ideal for ultra-low-power IoT systems where minimizing standby current is critical.' },
+      { type: 'h2', content: '5. Event-Driven Wake-Up Architecture' },
+      { type: 'paragraph', content: 'One of the most effective ways to reduce power consumption in IoT systems is to use an event-driven architecture.' },
+      { type: 'paragraph', content: 'Instead of continuously monitoring sensors, the system remains in sleep mode until a trigger event occurs.' },
+      { type: 'paragraph', content: 'A typical low-power design may include: battery power supply, mechanical vibration sensor, ultra-low-power microcontroller, and wireless communication module.' },
+      { type: 'paragraph', content: 'During standby: the microcontroller enters deep sleep mode, the wireless module is powered down, and the vibration sensor passively monitors movement.' },
+      { type: 'paragraph', content: 'When vibration is detected: the sensor triggers an interrupt, the microcontroller wakes up, and the device processes the event or transmits data.' },
+      { type: 'paragraph', content: 'This architecture allows the system to remain inactive most of the time, dramatically reducing energy consumption.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-event.png', alt: 'Event-driven wake-up architecture', caption: 'Event-driven wake-up architecture with mechanical vibration sensor.' },
+      { type: 'h2', content: '6. Typical Applications' },
+      { type: 'paragraph', content: 'Mechanical vibration sensors are widely used in applications that require long battery life and simple motion detection.' },
+      { type: 'paragraph', content: 'Asset Tracking: In logistics applications, vibration sensors can detect when an asset starts moving. The tracking device wakes up and activates GPS only when motion occurs.' },
+      { type: 'paragraph', content: 'Smart Home Security: Door and window sensors can use vibration detection to identify tampering or forced entry attempts.' },
+      { type: 'paragraph', content: 'Wearable Devices: Some wearable devices use vibration sensors to detect user activity without constantly running complex motion algorithms.' },
+      { type: 'paragraph', content: 'Industrial Monitoring: Battery-powered monitoring systems can detect abnormal machine vibration and activate wireless communication only when needed.' },
+      { type: 'image', src: '/blog-pic/vibration-iot-apps.png', alt: 'IoT applications for vibration sensors', caption: 'Typical IoT applications for mechanical vibration sensors.' },
+      { type: 'h2', content: '7. Advantages of Mechanical Vibration Sensors' },
+      { type: 'paragraph', content: 'Mechanical vibration sensors provide several benefits for IoT system designers.' },
+      { type: 'paragraph', content: 'Ultra-low standby power — They consume virtually no power while waiting for motion events.' },
+      { type: 'paragraph', content: 'Simple integration — They can be connected directly to microcontroller interrupt pins.' },
+      { type: 'paragraph', content: 'Fast response — They respond immediately to physical vibration.' },
+      { type: 'paragraph', content: 'Cost-effective solution — They are often less expensive than complex MEMS motion sensors.' },
+      { type: 'paragraph', content: 'Long operational lifetime — The absence of active electronics contributes to long-term reliability.' },
       { type: 'table', headers: ['Feature', 'Mechanical Sensor', 'MEMS Sensor'], rows: [
-        ['Standby Power', '~0', '10-100 uA'],
+        ['Standby Power', '~0', '10-100 µA'],
         ['Complexity', 'Low', 'High'],
         ['Cost', 'Low', 'Higher'],
-        ['Best Use', 'Wake-up trigger', 'Detailed motion analysis'],
       ]},
-      { type: 'h2', content: '7. Conclusion' },
-      { type: 'paragraph', content: 'As IoT products continue expanding into logistics, smart buildings, security, healthcare, and industrial monitoring, battery efficiency becomes more important than ever. Mechanical vibration sensors provide a simple and reliable way to reduce standby current by enabling event-driven motion detection.' },
-      { type: 'paragraph', content: 'For engineers designing long-lifetime IoT systems, vibration-based wake-up remains one of the most practical methods to extend battery life without adding unnecessary complexity.' },
+      { type: 'h2', content: '8. Conclusion' },
+      { type: 'paragraph', content: 'As IoT technology continues to expand into new industries, the demand for energy-efficient devices is increasing.' },
+      { type: 'paragraph', content: 'Mechanical vibration sensors offer a simple and reliable way to extend battery life by enabling event-driven motion detection.' },
+      { type: 'paragraph', content: 'By allowing devices to remain in sleep mode until vibration occurs, these sensors significantly reduce standby power consumption.' },
+      { type: 'paragraph', content: 'For engineers designing long-lifetime IoT systems, vibration-based wake-up detection remains one of the most practical solutions for achieving ultra-low power operation.' },
     ]
   },
   'kd1902s': {
@@ -443,9 +485,7 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>
@@ -724,13 +764,20 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
                 {/* CTA in article */}
                 <div className="mt-10 bg-green-50 border border-green-100 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div>
-                    <p className="text-gray-900 font-bold text-base mb-1">Interested in integrating this sensor?</p>
-                    <p className="text-gray-500 text-sm">Request a free sample and get technical support from our engineering team.</p>
+                    <p className="text-gray-900 font-bold text-base mb-1">{post.cta1?.text ?? 'Interested in integrating this sensor?'}</p>
+                    {!post.cta1 && <p className="text-gray-500 text-sm">Request a free sample and get technical support from our engineering team.</p>}
                   </div>
-                  <button onClick={() => setModalOpen(true)} className="shrink-0 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
-                    Request Sample
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
-                  </button>
+                  {post.cta1 ? (
+                    <a href={post.cta1.href} className="shrink-0 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
+                      {post.cta1.linkText}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
+                    </a>
+                  ) : (
+                    <button onClick={() => setModalOpen(true)} className="shrink-0 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
+                      Request Sample
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
+                    </button>
+                  )}
                 </div>
               </article>
 
@@ -752,11 +799,17 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
 
                   {/* Contact CTA */}
                   <div className="bg-green-600 rounded-2xl p-5 text-white">
-                    <p className="font-bold text-sm mb-2">Need a Sample?</p>
-                    <p className="text-green-100 text-xs mb-4 leading-relaxed">Contact our engineering team for technical support and free evaluation samples.</p>
-                    <button onClick={() => setModalOpen(true)} className="block w-full bg-white text-green-700 font-semibold text-xs py-2.5 rounded-xl text-center hover:bg-green-50 transition-colors">
-                      Get in Touch
-                    </button>
+                    <p className="font-bold text-sm mb-2">{post.cta2 ? 'Explore Solutions' : 'Need a Sample?'}</p>
+                    <p className="text-green-100 text-xs mb-4 leading-relaxed">{post.cta2 ? post.cta2.text : 'Contact our engineering team for technical support and free evaluation samples.'}</p>
+                    {post.cta2 ? (
+                      <a href={post.cta2.href} className="block w-full bg-white text-green-700 font-semibold text-xs py-2.5 rounded-xl text-center hover:bg-green-50 transition-colors">
+                        {post.cta2.linkText}
+                      </a>
+                    ) : (
+                      <button onClick={() => setModalOpen(true)} className="block w-full bg-white text-green-700 font-semibold text-xs py-2.5 rounded-xl text-center hover:bg-green-50 transition-colors">
+                        Get in Touch
+                      </button>
+                    )}
                   </div>
                 </div>
               </aside>

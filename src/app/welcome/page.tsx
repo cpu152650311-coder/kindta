@@ -71,7 +71,7 @@ export default function WelcomePage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 w-full">
           {/* Logo top-left inside hero */}
           <div className="mb-10">
-            <img src="/sitelogo22.png" alt="Kingdta" className="h-8 object-contain" />
+            <img src="/header-logo.png" alt="Kingdta" className="h-8 object-contain" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

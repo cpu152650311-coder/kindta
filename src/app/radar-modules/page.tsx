@@ -7,7 +7,7 @@ const PRODUCT_MENU = [
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -106,9 +106,7 @@ export default function RadarModulesPage() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>
@@ -265,7 +263,7 @@ export default function RadarModulesPage() {
             {RADAR_PRODUCTS.map((product, index) => (
               <div key={product.model} className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
                 <div className="grid grid-cols-1 lg:grid-cols-5">
-                  <div className={`lg:col-span-2 ${index % 2 === 0 ? 'bg-black' : 'bg-gray-100'} flex items-center justify-center p-8`}>
+                  <div className={`lg:col-span-2 ${product.model === 'BD4101A-C04' ? 'bg-[#F3F4F6]' : (index % 2 === 0 ? 'bg-black' : 'bg-gray-100')} flex items-center justify-center p-8`}>
                     <img src={product.img} alt={product.model} className="w-full max-w-[320px] h-auto object-contain" />
                   </div>
                   <div className="lg:col-span-3 p-8 lg:p-10">
@@ -342,7 +340,7 @@ export default function RadarModulesPage() {
               <a href="/contact" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-xl shadow-green-600/30 text-lg">
                 Contact Our Team
               </a>
-              <a href="/products" className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
+              <a href="/sensor-modules" className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg">
                 View Sensor Modules
               </a>
             </div>
@@ -361,7 +359,7 @@ export default function RadarModulesPage() {
               <div>
                 <p className="text-white font-semibold text-sm mb-4">Module Pages</p>
                 <ul className="space-y-2">
-                  <li><a href="/products" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Sensor Modules</a></li>
+                  <li><a href="/sensor-modules" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Sensor Modules</a></li>
                   <li><a href="/radar-modules" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Radar Modules</a></li>
                   <li><a href="/solutions" className="text-gray-400 hover:text-green-400 text-sm transition-colors">Solutions</a></li>
                 </ul>

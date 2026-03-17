@@ -18,16 +18,16 @@ function useInView(threshold = 0.15) {
   return { ref, inView }
 }
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // DATA
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 const PRODUCT_MENU = [
   {
     label: 'Sensor Modules',
     meta: 'Vibration / Tilt / Optical',
     desc: 'Core passive sensing products for smart hardware and industrial devices.',
-    href: '/products',
+    href: '/sensor-modules',
   },
   {
     label: 'Radar Modules',
@@ -177,9 +177,9 @@ const TESTIMONIALS = [
   },
 ]
 
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 // PAGE
-// 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// ─────────────────────────────────────────────
 
 export default function SolutionsPage() {
   const [scrolled, setScrolled] = useState(false)
@@ -239,13 +239,11 @@ export default function SolutionsPage() {
         }
       `}</style>
 
-      {/* 鈹€鈹€ NAVBAR 鈹€鈹€ */}
+      {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <div className="bg-gray-900 rounded-xl px-3 py-1.5">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-7 w-auto" />
-            </div>
+            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>            <div className="relative group">
@@ -332,7 +330,7 @@ export default function SolutionsPage() {
 
       <main className="pt-16">
 
-        {/* 鈹€鈹€ HERO 鈹€鈹€ */}
+        {/* ── HERO ── */}
         <section className="relative overflow-hidden bg-white py-24 lg:py-32">
           <div className="absolute inset-0 hero-pattern opacity-50" />
           <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-green-50/80 to-transparent" />
@@ -384,7 +382,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ SOLUTION PROCESS 鈹€鈹€ */}
+        {/* ── SOLUTION PROCESS ── */}
         <section className="py-24 bg-gray-50">
           <div ref={processRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${processRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -420,7 +418,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ SENSOR VISUAL BANNER 鈹€鈹€ */}
+        {/* ── SENSOR VISUAL BANNER ── */}
         <section className="relative h-72 overflow-hidden">
           <img src="/1.1.1.jpg" alt="Sensor Technology" className="w-full h-full object-cover object-right" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
@@ -443,7 +441,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ INDUSTRIES DEEP DIVE 鈹€鈹€ */}
+        {/* ── INDUSTRIES DEEP DIVE ── */}
         <section id="industries" className="py-24 bg-white">
           <div ref={industriesRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-12 ${industriesRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -514,7 +512,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ TESTIMONIALS 鈹€鈹€ */}
+        {/* ── TESTIMONIALS ── */}
         <section className="py-24 bg-gray-50">
           <div ref={testimonialsRef.ref} className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className={`text-center mb-14 ${testimonialsRef.inView ? 'anim-fade-up' : 'opacity-0'}`}>
@@ -544,7 +542,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ CTA 鈹€鈹€ */}
+        {/* ── CTA ── */}
         <section className="py-24 relative overflow-hidden">
           <img src="/D.1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/75" />
@@ -567,7 +565,7 @@ export default function SolutionsPage() {
           </div>
         </section>
 
-        {/* 鈹€鈹€ FOOTER 鈹€鈹€ */}
+        {/* ── FOOTER ── */}
         <footer className="bg-gray-950 pt-16 pb-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
@@ -630,7 +628,7 @@ export default function SolutionsPage() {
         </footer>
       </main>
 
-      {/* 鈹€鈹€ CONTACT MODAL 鈹€鈹€ */}
+      {/* ── CONTACT MODAL ── */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={(e) => e.target === e.currentTarget && setModalOpen(false)}>
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden anim-fade-up">
