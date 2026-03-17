@@ -222,19 +222,19 @@ const BLOGS = [
     title: 'KD1901S: Extending IoT Battery Life with Nano-Ampere Motion Wake-Up',
     tag: 'Product',
     img: '/blog-pic/KD1901S.jpg',
-    href: 'https://kingdta.com/kd1901s-extending-iot-battery-life-with-nano-ampere-motion-wake-up/',
+    href: '/blog/kd1901s',
   },
   {
     title: 'KD1918S-30: Redefining Safety with 360-degree SMD Optical Tilt Detection',
     tag: 'Product',
     img: '/blog-pic/KD1918S-5.jpg',
-    href: 'https://kingdta.com/kd1918s-30-redefining-safety-with-360-smd-optical-tilt-detection/',
+    href: '/blog/kd1918s',
   },
   {
     title: 'KD1902: The 2-Million-Cycle Vibration Sensor for Industrial IoT Reliability',
     tag: 'Application',
     img: '/blog-pic/KD1902S.jpg',
-    href: 'https://kingdta.com/the-hs1902-a-high-durability-smd-vibration-sensor-for-long-life-iot-applications/',
+    href: '/blog/kd1902s',
   },
 ]
 
@@ -910,14 +910,14 @@ export default function KingdtaPage() {
                 <p className="text-green-600 text-sm font-semibold uppercase tracking-wider mb-3">Latest Articles</p>
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">From Our Blog</h2>
               </div>
-              <a href="https://kingdta.com/blog/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-green-600 font-semibold text-sm hover:gap-3 transition-all shrink-0">
+              <a href="/blog" className="inline-flex items-center gap-2 text-green-600 font-semibold text-sm hover:gap-3 transition-all shrink-0">
                 View all articles
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
               </a>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {BLOGS.map((b, i) => (
-                <a key={b.title} href={b.href} target="_blank" rel="noreferrer"
+                <a key={b.title} href={b.href}
                   className={`group block bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover ${blogRef.inView ? `anim-fade-up delay-${(i + 1) * 100}` : 'opacity-0'}`}>
                   {/* Cover image: preserved aspect ratio */}
                   <div className="relative overflow-hidden bg-black">
