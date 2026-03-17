@@ -1,9 +1,15 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/seo/json-ld'
 import { PAGE_METADATA } from '@/lib/page-metadata'
 import { pageStructuredData } from '@/lib/structured-data'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+
+const ContactModal = dynamic(() => import('@/components/contact/contact-modal'), {
+  ssr: false,
+})
 
 // ─────────────────────────────────────────────
 // DATA
@@ -240,15 +246,7 @@ const CERTS = ['ISO 9001', 'RoHS', 'IPC-A-610', 'CE', 'MES Tracking']
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
-  const [inView, setInView] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(([entry]) => { if (entry?.isIntersecting) { setInView(true); obs.disconnect() } }, { threshold })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return { ref, inView }
+  return { ref, inView: true }
 }
 
 function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
@@ -370,7 +368,7 @@ export default function KingdtaPage() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
+            <Image src="/header-logo.png" alt="Kingdta" width={140} height={28} className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-green-700">Home</a>            {/* Products dropdown */}
@@ -502,7 +500,15 @@ export default function KingdtaPage() {
             <div className={`relative ${heroRef.inView ? 'anim-fade-in delay-300' : 'opacity-0'}`}>
               {/* Main factory image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/1.2.jpg" alt="Kingdta SMT Factory" className="w-full h-80 lg:h-96 object-cover object-center" />
+                <Image
+                  src="/1.2.jpg"
+                  alt="Kingdta SMT Factory"
+                  width={1200}
+                  height={960}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-80 lg:h-96 object-cover object-center"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 {/* Bottom overlay label */}
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
@@ -518,7 +524,14 @@ export default function KingdtaPage() {
                 <p className="text-xs text-gray-400 font-medium mb-1">Featured Product</p>
                 <p className="text-gray-900 font-bold text-sm mb-2">KD1902S</p>
                 <div className="w-full bg-black rounded-lg mb-2 overflow-hidden">
-                  <img src="/blog-pic/KD1902S.jpg" alt="KD1902S" className="w-full h-auto" />
+                  <Image
+                    src="/blog-pic/KD1902S.jpg"
+                    alt="KD1902S"
+                    width={640}
+                    height={480}
+                    sizes="208px"
+                    className="w-full h-auto"
+                  />
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-gray-500">2M Cycle Life</span>
@@ -601,9 +614,12 @@ export default function KingdtaPage() {
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${productsRef.inView ? 'anim-fade-in delay-300' : 'opacity-0'}`}>
               {/* Image — full natural ratio, no crop */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-md mx-auto bg-black">
-                <img
+                <Image
                   src={prod.img}
                   alt={prod.model}
+                  width={900}
+                  height={675}
+                  sizes="(max-width: 1024px) 100vw, 448px"
                   className="w-full h-auto transition-all duration-300"
                 />
                 <span className="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
@@ -646,7 +662,13 @@ export default function KingdtaPage() {
 
         {/* ── SENSOR VISUAL BANNER ── */}
         <section className="relative h-[420px] overflow-hidden">
-          <img src="/1.1.6.1-1.jpg" alt="Sensor Technology" className="w-full h-full object-cover object-right" />
+          <Image
+            src="/1.1.6.1-1.jpg"
+            alt="Sensor Technology"
+            fill
+            sizes="100vw"
+            className="object-cover object-right"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/10" />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl w-full mx-auto px-6 lg:px-8">
@@ -730,7 +752,14 @@ export default function KingdtaPage() {
               {/* Right: one large factory photo */}
               <div className={`${pcbaRef.inView ? 'anim-fade-in delay-200' : 'opacity-0'}`}>
                 <div className="rounded-2xl overflow-hidden shadow-lg">
-                  <img src="/1.1.jpg" alt="SMT Factory Floor" className="w-full h-auto" />
+                  <Image
+                    src="/1.1.jpg"
+                    alt="SMT Factory Floor"
+                    width={1200}
+                    height={900}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="w-full h-auto"
+                  />
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-center">
                   {[['8+', 'SMT Lines'], ['±0.03mm', 'Placement Acc.'], ['ISO 9001', 'Certified']].map(([v, k]) => (
@@ -782,11 +811,25 @@ export default function KingdtaPage() {
             <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-8">
               {[1,2,3,4,5,6,7,8,9,10].map(n => (
                 <div key={n} className="w-24 h-16 lg:w-28 lg:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
-                  <img src={`/partner/${n}.jpg`} alt={`Partner ${n}`} className="max-w-full max-h-full object-contain" />
+                  <Image
+                    src={`/partner/${n}.jpg`}
+                    alt={`Partner ${n}`}
+                    width={112}
+                    height={80}
+                    sizes="112px"
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
               ))}
               <div className="w-24 h-16 lg:w-28 lg:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
-                <img src="/partner/logo.jpg" alt="Partner" className="max-w-full max-h-full object-contain" />
+                <Image
+                  src="/partner/logo.jpg"
+                  alt="Partner"
+                  width={112}
+                  height={80}
+                  sizes="112px"
+                  className="max-w-full max-h-full object-contain"
+                />
               </div>
             </div>
           </div>
@@ -810,7 +853,14 @@ export default function KingdtaPage() {
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">"{t.quote}"</p>
                   <div className="flex items-center gap-3">
-                    <img src={t.img} alt={t.name} className="w-10 h-10 rounded-full object-cover border-2 border-green-100" />
+                    <Image
+                      src={t.img}
+                      alt={t.name}
+                      width={40}
+                      height={40}
+                      sizes="40px"
+                      className="w-10 h-10 rounded-full object-cover border-2 border-green-100"
+                    />
                     <div>
                       <p className="text-gray-900 font-semibold text-sm">{t.name}</p>
                       <p className="text-gray-400 text-xs">{t.role} - {t.company}</p>
@@ -871,7 +921,14 @@ export default function KingdtaPage() {
                   className={`group block bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover ${blogRef.inView ? `anim-fade-up delay-${(i + 1) * 100}` : 'opacity-0'}`}>
                   {/* Cover image: preserved aspect ratio */}
                   <div className="relative overflow-hidden bg-black">
-                    <img src={b.img} alt={b.title} className="w-full h-auto group-hover:scale-105 transition-transform duration-500" />
+                    <Image
+                      src={b.img}
+                      alt={b.title}
+                      width={900}
+                      height={675}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                    />
                     <span className="absolute top-3 left-3 text-xs text-white font-semibold bg-green-600 px-2.5 py-1 rounded-full">{b.tag}</span>
                   </div>
                   <div className="p-5">
@@ -889,7 +946,7 @@ export default function KingdtaPage() {
 
         {/* ── CTA ── */}
         <section className="py-24 relative overflow-hidden">
-          <img src="/D.1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-center" />
+          <Image src="/D.1.jpg" alt="" fill sizes="100vw" className="absolute inset-0 object-cover object-center" />
           <div className="absolute inset-0 bg-black/75" />
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-5 leading-tight">
@@ -919,7 +976,7 @@ export default function KingdtaPage() {
               {/* Brand */}
               <div className="lg:col-span-1">
                 <div className="mb-4">
-                  <img src="/sitelogo22.png" alt="Kingdta" className="h-8 w-auto" />
+                  <Image src="/sitelogo22.png" alt="Kingdta" width={160} height={32} className="h-8 w-auto" />
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">Shenzhen Kingdta Technology Co., Ltd. - Your Sensor-to-Board Solution Provider.</p>
                 <div className="flex gap-3">
@@ -982,64 +1039,11 @@ export default function KingdtaPage() {
         </footer>
       </main>
 
-      {/* ── CONTACT MODAL ── */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={(e) => e.target === e.currentTarget && setModalOpen(false)}>
-          <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden anim-fade-up">
-            <div className="h-1.5 bg-gradient-to-r from-green-400 via-green-600 to-emerald-500" />
-            <div className="p-8">
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h3 className="text-gray-900 font-bold text-xl mb-1">Get a Free Quote</h3>
-                  <p className="text-gray-500 text-sm">We respond within 24 hours.</p>
-                </div>
-                <button onClick={() => setModalOpen(false)} className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-                </button>
-              </div>
-              <form action="https://formsubmit.co/046212858f6a8cc4976203100919d247" method="POST" encType="multipart/form-data" className="space-y-4">
-                <input type="hidden" name="_next" value="https://kingdta.com/thank-you/" />
-                <input type="hidden" name="_subject" value="AD New Inquiry from kingdta Website Contact Form" />
-                <input type="hidden" name="_captcha" value="true" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_autoresponse" value="Thank you for contacting Kingdta. We have received your inquiry and will respond within 24 hours." />
-                <input type="text" name="_honey" style={{display:'none'}} />
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Name</label>
-                    <input name="name" required className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email *</label>
-                    <input name="email" type="email" required className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Company</label>
-                    <input name="company" className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Company name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Phone</label>
-                    <input name="phone" className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="+1 xxx xxxx" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">Project Details</label>
-                  <textarea name="message" rows={3} className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none" placeholder="Describe your project, sensor requirements, production volume..."></textarea>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">Attachment</label>
-                  <input name="attachment" type="file" accept="*/*" className="w-full text-sm text-gray-500 border border-gray-200 rounded-xl px-4 py-2 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
-                </div>
-                <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition-colors shadow-lg shadow-green-600/20">
-                  Send Inquiry
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      <ContactModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        placeholder="Describe your project, sensor requirements, production volume..."
+      />
     </>
   )
 }

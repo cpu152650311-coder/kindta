@@ -1,7 +1,26 @@
 'use client'
 
-import { use, useEffect, useRef, useState } from 'react'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+import { use, useEffect, useState } from 'react'
 import { notFound } from 'next/navigation'
+
+const ContactModal = dynamic(() => import('@/components/contact/contact-modal'), {
+  ssr: false,
+})
+
+const BlogPostInteractiveDemo = dynamic(
+  () => import('@/components/blog/blog-post-interactive-demo'),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
+        <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Interactive Demo</p>
+        <div className="h-28 rounded-xl bg-gray-900 animate-pulse" />
+      </div>
+    ),
+  }
+)
 
 const PRODUCT_MENU = [
   {
@@ -413,50 +432,12 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  // Interactive demo states
-  const [shakeActive, setShakeActive] = useState(false)
-  const [shakeCount, setShakeCount] = useState(0)
-  const [tiltAngle, setTiltAngle] = useState(0)
-  const [holdActive, setHoldActive] = useState(false)
-  const [pulseCount, setPulseCount] = useState(0)
-  const [scopeActive, setScopeActive] = useState(false)
-  const holdTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const shakeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const scopeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  // KD1912 hold-to-vibrate logic
-  const startHold = () => {
-    setHoldActive(true)
-    holdTimerRef.current = setInterval(() => {
-      setPulseCount(p => Math.min(p + 1, 10))
-    }, 300)
-  }
-  const stopHold = () => {
-    setHoldActive(false)
-    if (holdTimerRef.current) clearInterval(holdTimerRef.current)
-    setTimeout(() => setPulseCount(0), 1500)
-  }
-
-  // KD1902S shake logic
-  const doShake = () => {
-    setShakeActive(true)
-    setShakeCount(c => c + 1)
-    if (shakeTimerRef.current) clearTimeout(shakeTimerRef.current)
-    shakeTimerRef.current = setTimeout(() => setShakeActive(false), 1200)
-  }
-
-  // KD1901S oscilloscope logic
-  const doScope = () => {
-    setScopeActive(true)
-    if (scopeTimerRef.current) clearTimeout(scopeTimerRef.current)
-    scopeTimerRef.current = setTimeout(() => setScopeActive(false), 2000)
-  }
 
   const post = BLOG_POSTS[params.slug]
   if (!post) { notFound(); return null }
@@ -485,7 +466,7 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <a href="/" className="flex items-center shrink-0">
-            <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
+            <Image src="/header-logo.png" alt="Kingdta" width={140} height={28} className="h-7 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7">
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-green-700 transition-colors">Home</a>
@@ -568,7 +549,14 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
 
         {/* HERO */}
         <section className="relative overflow-hidden bg-gray-950 py-20">
-          <img src={post.coverImg} alt={post.title} className="absolute inset-0 w-full h-full object-cover opacity-20" />
+          <Image
+            src={post.coverImg}
+            alt={post.title}
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 object-cover opacity-20"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-gray-950/20" />
           <div className="relative max-w-4xl mx-auto px-6 lg:px-8 anim">
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
@@ -613,7 +601,14 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
                   if (sec.type === 'image') return (
                     <figure key={i} className="my-8">
                       <div className="rounded-2xl overflow-hidden bg-black">
-                        <img src={sec.src} alt={sec.alt} className="w-full h-auto" />
+                        <Image
+                          src={sec.src ?? '/header-logo.png'}
+                          alt={sec.alt ?? post.title}
+                          width={1200}
+                          height={750}
+                          sizes="(max-width: 1024px) 100vw, 900px"
+                          className="w-full h-auto"
+                        />
                       </div>
                       {sec.caption && <figcaption className="text-center text-gray-400 text-xs mt-3 italic">{sec.caption}</figcaption>}
                     </figure>
@@ -635,118 +630,7 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
                   return null
                 })}
 
-                {/* Interactive Demo Section */}
-                {params.slug === 'kd1902s' && (
-                  <div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
-                    <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Interactive Demo</p>
-                    <h3 className="text-white font-bold text-lg mb-4">360° Detection Logic Simulator</h3>
-                    <div className="flex flex-col sm:flex-row items-center gap-6">
-                      <div className="relative w-32 h-32 shrink-0">
-                        <div className={`absolute inset-0 rounded-full border-2 ${shakeActive ? 'border-green-400 shadow-[0_0_20px_rgba(74,222,128,0.6)]' : 'border-gray-600'} transition-all duration-300`} />
-                        <div className={`absolute inset-3 rounded-full border ${shakeActive ? 'border-green-500' : 'border-gray-700'} transition-all duration-300`} />
-                        <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-100 ${shakeActive ? 'animate-bounce' : ''}`}>
-                          <div className={`w-4 h-4 rounded-full ${shakeActive ? 'bg-green-400' : 'bg-gray-500'} transition-colors`} />
-                        </div>
-                        <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400">KD1902S</span>
-                      </div>
-                      <div className="flex-1 space-y-3">
-                        <div className="bg-gray-900 rounded-xl p-3 font-mono text-xs space-y-1.5">
-                          <div className="flex justify-between"><span className="text-gray-500">Movement Axis:</span><span className={shakeActive ? 'text-green-400' : 'text-gray-400'}>{shakeActive ? 'XY ±360°' : 'Static'}</span></div>
-                          <div className="flex justify-between"><span className="text-gray-500">Pulse Output:</span><span className={shakeActive ? 'text-yellow-400' : 'text-gray-400'}>{shakeActive ? 'LOW (Bridged)' : 'HIGH (Open)'}</span></div>
-                          <div className="flex justify-between"><span className="text-gray-500">Trigger Count:</span><span className="text-blue-400">{shakeCount}</span></div>
-                        </div>
-                        <div className={`text-center text-xs font-bold py-2 rounded-xl ${shakeActive ? 'bg-green-600 text-white' : 'bg-gray-800 text-gray-500'} transition-colors`}>
-                          {shakeActive ? '⚡ WAKE-UP TRIGGERED' : '💤 SYSTEM SLEEPING'}
-                        </div>
-                        <button onClick={doShake} className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors">
-                          Random Shake
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {params.slug === 'kd1901s' && (
-                  <div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
-                    <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Interactive Lab</p>
-                    <h3 className="text-white font-bold text-lg mb-4">Virtual Oscilloscope — KD1901S</h3>
-                    <div className="bg-gray-900 rounded-xl p-4 mb-4 font-mono">
-                      <div className="flex justify-between text-xs text-gray-500 mb-2">
-                        <span>Signal Monitor: KD1901S</span><span>VCC: 3.3V · 10ms/div</span>
-                      </div>
-                      <div className="h-16 flex items-end gap-0.5 border-b border-gray-700">
-                        {Array.from({ length: 40 }).map((_, i) => {
-                          const pulse = scopeActive && (i % 4 === 0 || i % 4 === 1)
-                          return <div key={i} className={`flex-1 transition-all duration-75 ${pulse ? 'bg-green-400 h-full' : 'bg-gray-700 h-1'}`} style={{ transitionDelay: `${i * 20}ms` }} />
-                        })}
-                      </div>
-                      <div className={`mt-2 text-center text-xs font-bold ${scopeActive ? 'text-green-400' : 'text-gray-600'}`}>
-                        {scopeActive ? '⚡ WAKE-UP SIGNAL DETECTED' : '— NO SIGNAL —'}
-                      </div>
-                    </div>
-                    <button onClick={doScope} className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors">
-                      Simulate Vibration
-                    </button>
-                  </div>
-                )}
-
-                {params.slug === 'kd1912' && (
-                  <div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
-                    <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Interactive Simulation</p>
-                    <h3 className="text-white font-bold text-lg mb-4">MCU Wake-Up Filter Logic — KD1912</h3>
-                    <div className="bg-gray-900 rounded-xl p-4 mb-4">
-                      <div className="flex justify-between items-center mb-3">
-                        <span className="text-xs text-gray-400">Pulse Counter (Filter Accumulator)</span>
-                        <span className="text-xs text-gray-500">5M Cycles Rated</span>
-                      </div>
-                      <div className="flex gap-1 mb-3">
-                        {Array.from({ length: 10 }).map((_, i) => (
-                          <div key={i} className={`flex-1 h-6 rounded transition-colors duration-150 ${i < pulseCount ? (pulseCount >= 5 ? 'bg-green-500' : 'bg-yellow-500') : 'bg-gray-700'}`} />
-                        ))}
-                      </div>
-                      <div className="flex justify-between text-xs font-mono">
-                        <span className="text-gray-500">Raw Pulses: <span className="text-white">{pulseCount}</span></span>
-                        <span className="text-gray-500">Wake Threshold: <span className="text-yellow-400">5</span></span>
-                      </div>
-                      <div className={`mt-3 text-center text-xs font-bold py-2 rounded-xl ${pulseCount >= 5 ? 'bg-green-600 text-white' : 'bg-gray-800 text-gray-500'} transition-colors`}>
-                        {pulseCount >= 5 ? '⚡ SYSTEM AWAKE' : '💤 SYSTEM SLEEPING'}
-                      </div>
-                    </div>
-                    <button
-                      onMouseDown={startHold} onMouseUp={stopHold} onMouseLeave={stopHold}
-                      onTouchStart={startHold} onTouchEnd={stopHold}
-                      className={`w-full font-semibold py-2.5 rounded-xl text-sm transition-colors select-none ${holdActive ? 'bg-yellow-500 text-gray-900' : 'bg-green-600 hover:bg-green-500 text-white'}`}>
-                      {holdActive ? 'Vibrating...' : 'Hold to Vibrate'}
-                    </button>
-                  </div>
-                )}
-
-                {params.slug === 'kd1918s' && (
-                  <div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
-                    <p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Interactive Demo</p>
-                    <h3 className="text-white font-bold text-lg mb-4">KD1918S Tilt Angle Simulator</h3>
-                    <div className="bg-gray-900 rounded-xl p-4 mb-4">
-                      <div className="flex items-center justify-center mb-4" style={{ height: 80 }}>
-                        <div className="relative w-16 h-16 flex items-center justify-center" style={{ transform: `rotate(${tiltAngle}deg)`, transition: 'transform 0.1s ease' }}>
-                          <div className={`w-16 h-16 rounded-full border-4 ${Math.abs(tiltAngle) > 30 ? 'border-red-500' : 'border-green-400'} flex items-center justify-center transition-colors`}>
-                            <div className={`w-5 h-5 rounded-full ${Math.abs(tiltAngle) > 30 ? 'bg-red-500' : 'bg-green-400'} transition-colors`} />
-                          </div>
-                        </div>
-                      </div>
-                      <input type="range" min={-90} max={90} value={tiltAngle} onChange={e => setTiltAngle(Number(e.target.value))}
-                        className="w-full accent-green-500 mb-3" />
-                      <div className="flex justify-between text-xs text-gray-500 mb-3">
-                        <span>-90° (Left)</span><span>0° (Upright)</span><span>+90° (Right)</span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 font-mono text-xs">
-                        <div className="bg-gray-800 rounded-lg p-2 text-center"><div className="text-gray-500 mb-1">Tilt Angle</div><div className="text-white font-bold">{tiltAngle}°</div></div>
-                        <div className="bg-gray-800 rounded-lg p-2 text-center"><div className="text-gray-500 mb-1">Output</div><div className={`font-bold ${Math.abs(tiltAngle) > 30 ? 'text-red-400' : 'text-green-400'}`}>{Math.abs(tiltAngle) > 30 ? 'LOW' : 'HIGH'}</div></div>
-                        <div className="bg-gray-800 rounded-lg p-2 text-center"><div className="text-gray-500 mb-1">Status</div><div className={`font-bold ${Math.abs(tiltAngle) > 30 ? 'text-red-400' : 'text-green-400'}`}>{Math.abs(tiltAngle) > 30 ? 'TRIGGER' : 'NORMAL'}</div></div>
-                      </div>
-                      <p className="text-xs text-gray-600 mt-2 text-center">Trigger threshold: ±30°</p>
-                    </div>
-                  </div>
-                )}
+                <BlogPostInteractiveDemo slug={params.slug} />
 
                 {post.pdfLink && (
                   <div className="mt-10 bg-white border border-gray-200 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
@@ -843,7 +727,7 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
         <footer className="bg-gray-950 pt-12 pb-8 mt-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-              <img src="/sitelogo22.png" alt="Kingdta" className="h-8 w-auto" />
+              <Image src="/sitelogo22.png" alt="Kingdta" width={160} height={32} className="h-8 w-auto" />
               <div className="flex gap-6 text-sm text-gray-400">
                 {[['/', 'Home'], ['/products', 'Products'], ['/solutions', 'Solutions'], ['/blog', 'Blog'], ['/about', 'About'], ['/contact', 'Contact']].map(([h, l]) => (
                   <a key={l} href={h} className="hover:text-green-400 transition-colors">{l}</a>
@@ -858,61 +742,7 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
         </footer>
       </main>
 
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={(e) => e.target === e.currentTarget && setModalOpen(false)}>
-          <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
-            <div className="h-1.5 bg-gradient-to-r from-green-400 via-green-600 to-emerald-500" />
-            <div className="p-8">
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h3 className="text-gray-900 font-bold text-xl mb-1">Get a Free Quote</h3>
-                  <p className="text-gray-500 text-sm">We respond within 24 hours.</p>
-                </div>
-                <button onClick={() => setModalOpen(false)} className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-                </button>
-              </div>
-              <form action="https://formsubmit.co/046212858f6a8cc4976203100919d247" method="POST" encType="multipart/form-data" className="space-y-4">
-                <input type="hidden" name="_next" value="https://kingdta.com/thank-you/" />
-                <input type="hidden" name="_subject" value="AD New Inquiry from kingdta Website Contact Form" />
-                <input type="hidden" name="_captcha" value="true" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_autoresponse" value="Thank you for contacting Kingdta. We have received your inquiry and will respond within 24 hours." />
-                <input type="text" name="_honey" style={{display:"none"}} />
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Name</label>
-                    <input name="name" required className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email *</label>
-                    <input name="email" type="email" required className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="your@email.com" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Company</label>
-                    <input name="company" className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Company name" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">Phone</label>
-                    <input name="phone" className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="+1 xxx xxxx" />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">Project Details</label>
-                  <textarea name="message" rows={3} className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none" placeholder="Describe your project requirements..."></textarea>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">Attachment</label>
-                  <input name="attachment" type="file" accept="*/*" className="w-full text-sm text-gray-500 border border-gray-200 rounded-xl px-4 py-2 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
-                </div>
-                <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition-colors shadow-lg shadow-green-600/20">Send Inquiry</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   )
 }
