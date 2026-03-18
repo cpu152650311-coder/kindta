@@ -176,7 +176,7 @@ export default function ContactPage() {
 
       {/* ── NAVBAR ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-sm border-b border-gray-100' : 'bg-white/95 backdrop-blur-sm'}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-[68px]">
           <a href="/" className="flex items-center shrink-0">
             <img src="/header-logo.png" alt="Kingdta" className="h-7 w-auto" />
           </a>
@@ -259,7 +259,7 @@ export default function ContactPage() {
         )}
       </header>
 
-      <main className="pt-16">
+      <main className="pt-[68px]">
 
         {/* ── HERO ── */}
         <section className="relative overflow-hidden bg-white py-20 lg:py-28">

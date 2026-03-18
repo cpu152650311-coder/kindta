@@ -33,7 +33,7 @@ export default async function BlogListPage({
 
       <BlogSiteHeader />
 
-      <main className="pt-16">
+      <main className="pt-[68px]">
 
         {/* HERO */}
         <section className="relative overflow-hidden bg-white py-20">
