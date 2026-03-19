@@ -14,6 +14,23 @@ const config = {
       },
     ],
   },
+  // 静态资源长期缓存，减轻重复请求与网络链（LCP/Network 优化）
+  async headers() {
+    return [
+      {
+        source: "/blog-pic/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        source: "/radar/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+    ];
+  },
 };
 
 export default config;
