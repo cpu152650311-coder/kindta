@@ -162,12 +162,14 @@ export function productStructuredData(items: readonly ProductItem[]) {
 			"@type": "Brand",
 			name: SITE_NAME,
 		},
-		// Google 要求 Product 必须包含 offers、review 或 aggregateRating 之一才能显示富媒体结果
+		// Google 要求 Product 的 offers 必须包含 price 与 priceCurrency 才能显示富媒体结果（B2B 询价用 0 表示）
 		offers: {
 			"@type": "Offer",
 			url: absoluteUrl(item.path),
 			availability: "https://schema.org/InStock",
 			priceValidUntil: "2027-12-31",
+			price: "0",
+			priceCurrency: "USD",
 		},
 	}));
 }
