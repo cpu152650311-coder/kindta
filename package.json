@@ -57,11 +57,5 @@
 	"ct3aMetadata": {
 		"initVersion": "7.39.3"
 	},
-	"packageManager": "npm@10.7.0",
-	"browserslist": [
-		"last 2 Chrome versions",
-		"last 2 Firefox versions",
-		"last 2 Safari versions",
-		"last 2 Edge versions"
-	]
+	"packageManager": "npm@10.7.0"
 }
