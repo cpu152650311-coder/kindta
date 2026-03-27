@@ -46,12 +46,12 @@ const RADAR_PRODUCTS = [
     scenarios: ['Smart home panels', 'Door locks', 'Doorbells', 'Security alarms', 'Sensor lighting'],
   },
   {
-    model: 'WT4104B-C01',
+    model: 'BD4104B-C01',
     name: 'Blind-Spot Detection Radar Module',
     badge: '77-81GHz',
     img: '/radar/wt4104b-front.png',
-    articleHref: '/blog/wt4104b-c01-blind-spot-detection-radar-ebike-safety',
-    pdfHref: '/downloads/wt4104b-c01-bsd-radar-spec.pdf',
+    articleHref: '/blog/bd4104b-c01-blind-spot-detection-radar-ebike-safety',
+    pdfHref: '/downloads/bd4104b-c01-bsd-radar-spec.pdf',
     summary:
       'A compact FMCW blind-spot detection radar module designed for low-speed vehicles, e-bikes, and safety-assistance applications.',
     specs: [

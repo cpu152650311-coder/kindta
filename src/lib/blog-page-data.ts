@@ -46,10 +46,10 @@ export const BLOG_LIST_POSTS = [
 		featured: false,
 	},
 	{
-		slug: "wt4104b-c01-blind-spot-detection-radar-ebike-safety",
-		title: "WT4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety",
+		slug: "bd4104b-c01-blind-spot-detection-radar-ebike-safety",
+		title: "BD4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety",
 		excerpt:
-			"Learn how the WT4104B-C01 radar module brings BSD, lane-change assistance, and rear warning capability to e-bikes, scooters, and compact vehicles.",
+			"Learn how the BD4104B-C01 radar module brings BSD, lane-change assistance, and rear warning capability to e-bikes, scooters, and compact vehicles.",
 		date: "Mar 17, 2026",
 		readTime: "7 min read",
 		category: "Application Guide",

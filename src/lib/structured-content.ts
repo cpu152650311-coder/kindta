@@ -57,8 +57,8 @@ export const RADAR_PRODUCTS = [
 		category: "Microwave Radar Module",
 	},
 	{
-		name: "WT4104B-C01 Blind-Spot Detection Radar Module",
-		sku: "WT4104B-C01",
+		name: "BD4104B-C01 Blind-Spot Detection Radar Module",
+		sku: "BD4104B-C01",
 		path: "/radar-modules",
 		image: "/radar/wt4104b-front-pcba.png",
 		description:

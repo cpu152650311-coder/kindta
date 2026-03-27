@@ -96,27 +96,27 @@ const BLOG_POSTS: Record<string, {
       { type: 'paragraph', content: 'For engineers building smart lighting, access control, or compact presence-detection products, the BD4101A-C04 offers a practical balance of low power, stable performance, compact size, and easy integration. It is a strong radar option when the design goal is dependable human-motion sensing in a clean, board-level module format.' },
     ]
   },
-  'wt4104b-c01-blind-spot-detection-radar-ebike-safety': {
-    slug: 'wt4104b-c01-blind-spot-detection-radar-ebike-safety',
-    title: 'WT4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety',
+  'bd4104b-c01-blind-spot-detection-radar-ebike-safety': {
+    slug: 'bd4104b-c01-blind-spot-detection-radar-ebike-safety',
+    title: 'BD4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety',
     subtitle: 'A compact FMCW radar module built for blind-spot monitoring, lane-change assistance, and rear-collision warning in e-bikes, scooters, motorcycles, and other low-speed vehicles.',
     date: 'Mar 17, 2026',
     readTime: '7 min read',
     category: 'Application Guide',
     coverImg: '/radar/wt4104b-front-pcba.png',
     productLink: '/radar-modules',
-    pdfLink: '/downloads/wt4104b-c01-bsd-radar-spec.pdf',
+    pdfLink: '/downloads/bd4104b-c01-bsd-radar-spec.pdf',
     sections: [
-      { type: 'paragraph', content: 'Blind-spot awareness is no longer limited to premium cars. As e-bikes, electric tricycles, scooters, and compact special-purpose vehicles become more common, safety-assistance hardware is moving into lower-speed mobility platforms as well. The WT4104B-C01 radar module is designed for this trend, bringing rear blind-spot detection and warning capability into a compact board-level solution.' },
+      { type: 'paragraph', content: 'Blind-spot awareness is no longer limited to premium cars. As e-bikes, electric tricycles, scooters, and compact special-purpose vehicles become more common, safety-assistance hardware is moving into lower-speed mobility platforms as well. The BD4104B-C01 radar module is designed for this trend, bringing rear blind-spot detection and warning capability into a compact board-level solution.' },
       { type: 'paragraph', content: 'Based on the specification, the module integrates a 77GHz to 81GHz FMCW radar transceiver, 2Tx 2Rx PCB antenna array, radar signal processing, and a high-performance automotive-grade MCU. It supports CAN connectivity and warning outputs for left and right indicators, making it suitable for system-level safety integration.' },
-      { type: 'image', src: '/radar/wt4104b-front-pcba.png', alt: 'WT4104B-C01 blind-spot detection radar module front view', caption: 'WT4104B-C01 front-side PCBA with integrated radar section and signal-processing circuitry.' },
+      { type: 'image', src: '/radar/wt4104b-front-pcba.png', alt: 'BD4104B-C01 blind-spot detection radar module front view', caption: 'BD4104B-C01 front-side PCBA with integrated radar section and signal-processing circuitry.' },
       { type: 'h2', content: '1. Why Blind-Spot Radar Matters for Low-Speed Vehicles' },
       { type: 'paragraph', content: 'Riders of e-bikes, scooters, motorcycles, and utility vehicles are often exposed to limited rear visibility. Mirrors and rider attention help, but they are not always enough when nearby vehicles approach quickly from the side or rear. A blind-spot radar module can continuously watch these dangerous zones and provide earlier warning to the rider or vehicle controller.' },
       { type: 'paragraph', content: 'This is particularly useful in lane-change scenarios, dense city traffic, and mixed-vehicle environments where small mobility platforms share the road with larger vehicles.' },
       { type: 'h2', content: '2. Core Functional Strengths' },
-      { type: 'paragraph', content: 'The WT4104B-C01 uses FMCW radar processing, which enables distance, speed, and angle estimation for moving targets. The specification highlights wide angular coverage, high sensitivity, support for up to 16 targets, and resistance to environmental conditions such as dust, airflow, light, temperature, and humidity. These are exactly the conditions where optical-only approaches may become unreliable.' },
+      { type: 'paragraph', content: 'The BD4104B-C01 uses FMCW radar processing, which enables distance, speed, and angle estimation for moving targets. The specification highlights wide angular coverage, high sensitivity, support for up to 16 targets, and resistance to environmental conditions such as dust, airflow, light, temperature, and humidity. These are exactly the conditions where optical-only approaches may become unreliable.' },
       { type: 'paragraph', content: 'For practical vehicle integration, the module also supports CAN communication and controlled warning outputs that can directly cooperate with left and right indicator logic.' },
-      { type: 'image', src: '/radar/wt4104b-back-pcba.png', alt: 'WT4104B-C01 blind-spot detection radar module back view', caption: 'Rear-side PCBA view of the WT4104B-C01 radar module used for BSD integration.' },
+      { type: 'image', src: '/radar/wt4104b-back-pcba.png', alt: 'BD4104B-C01 blind-spot detection radar module back view', caption: 'Rear-side PCBA view of the BD4104B-C01 radar module used for BSD integration.' },
       { type: 'h2', content: '3. Detection Capability and Technical Parameters' },
       { type: 'table', headers: ['Parameter', 'Specification', 'Note'], rows: [
         ['Working Mode', 'FMCW', 'Continuous-wave radar processing'],
@@ -139,7 +139,7 @@ const BLOG_POSTS: Record<string, {
       { type: 'paragraph', content: 'The module is intended for rear installation, typically at a height of roughly 30cm to 100cm above ground. The front cover should use non-metal material without metallic coating, and the space between the radar and cover should follow the recommended distance guidance. Mechanical alignment is also important, with azimuth and pitch tolerance kept within the specification range for best performance.' },
       { type: 'paragraph', content: 'These requirements are critical because blind-spot radar performance depends not only on the RF design itself, but also on cover material, mounting angle, and installation position inside the vehicle body.' },
       { type: 'h2', content: '7. Conclusion' },
-      { type: 'paragraph', content: 'The WT4104B-C01 is a practical radar module for brands developing safer e-bikes, scooters, motorcycles, and other low-speed vehicles. With compact size, CAN-friendly integration, wide detection coverage, and dedicated safety-warning logic, it offers a clear upgrade path for mobility products that need blind-spot awareness without a large hardware footprint.' },
+      { type: 'paragraph', content: 'The BD4104B-C01 is a practical radar module for brands developing safer e-bikes, scooters, motorcycles, and other low-speed vehicles. With compact size, CAN-friendly integration, wide detection coverage, and dedicated safety-warning logic, it offers a clear upgrade path for mobility products that need blind-spot awareness without a large hardware footprint.' },
     ]
   },
   'how-vibration-sensors-extend-iot-battery-life': {

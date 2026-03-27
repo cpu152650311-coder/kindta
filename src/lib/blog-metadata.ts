@@ -6,11 +6,11 @@ export const BLOG_METADATA = {
 		path: "/blog/bd4101a-c04-microwave-radar-module-smart-lighting",
 		image: "/radar/bd4101a-front-pcba.png",
 	},
-	"wt4104b-c01-blind-spot-detection-radar-ebike-safety": {
-		title: "WT4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety | Kingdta Blog",
+	"bd4104b-c01-blind-spot-detection-radar-ebike-safety": {
+		title: "BD4104B-C01 Blind-Spot Detection Radar for E-Bikes and Low-Speed Vehicle Safety | Kingdta Blog",
 		description:
 			"A compact FMCW radar module built for blind-spot monitoring, lane-change assistance, and rear-collision warning in e-bikes, scooters, motorcycles, and other low-speed vehicles.",
-		path: "/blog/wt4104b-c01-blind-spot-detection-radar-ebike-safety",
+		path: "/blog/bd4104b-c01-blind-spot-detection-radar-ebike-safety",
 		image: "/radar/wt4104b-front-pcba.png",
 	},
 	"how-vibration-sensors-extend-iot-battery-life": {

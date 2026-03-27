@@ -31,6 +31,20 @@ const config = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog/wt4104b-c01-blind-spot-detection-radar-ebike-safety",
+        destination: "/blog/bd4104b-c01-blind-spot-detection-radar-ebike-safety",
+        permanent: true,
+      },
+      {
+        source: "/downloads/bd4104b-c01-bsd-radar-spec.pdf",
+        destination: "/downloads/wt4104b-c01-bsd-radar-spec.pdf",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default config;
