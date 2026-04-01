@@ -25,8 +25,8 @@ const CATEGORIES = [
     title: 'Omni-directional\nVibration Sensors',
     desc: 'High sensitivity, 2M+ cycle life, and compact SMD packaging for always-on devices.',
     applications: 'Asset trackers, smart security devices, TPMS, and wearable wake-up functions.',
-    href: '#kd1902s',
-    models: ['KD1902S', 'KD1912', 'KD1901S'],
+    href: '#kd1902',
+    models: ['KD1902', 'KD1902+', 'KD1911H', 'KD1912', 'KD1901S'],
   },
   {
     img: '/B2.2.png',
@@ -35,8 +35,8 @@ const CATEGORIES = [
     title: 'Tilt & Angle\nSensors',
     desc: 'Low-power angle and position detection for safety shut-off and orientation sensing.',
     applications: 'Power tools, medical devices, smart pens, and consumer electronics.',
-    href: '#kd1908s',
-    models: ['KD1908S'],
+    href: '#kd1908',
+    models: ['KD1908'],
   },
   {
     img: '/B2.3.png',
@@ -52,15 +52,15 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   {
-    id: 'kd1902s',
-    model: 'KD1902S',
+    id: 'kd1902',
+    model: 'KD1902',
     name: 'Omni-directional Vibration Sensor',
     badge: '360-degree Trigger',
     img: '/blog-pic/KD1902S.jpg',
     tag: 'Vibration',
     tagColor: 'bg-green-600',
-    articleHref: '/blog/kd1902s',
-    pdfHref: '/downloads/kd1902s-datasheet.pdf',
+    articleHref: '/blog/kd1902',
+    pdfHref: '/downloads/kd1902-datasheet.pdf',
     intro:
       'Industry-leading omnidirectional vibration sensing with a proven 2M+ cycle lifespan for smart security, IoT wake-up triggers, and TPMS applications.',
     specs: [
@@ -77,14 +77,40 @@ const PRODUCTS = [
     applications: ['GPS Asset Trackers', 'TPMS Systems', 'Smart Security', 'IoT Wake-up', 'Wearables'],
   },
   {
-    id: 'kd1908s',
-    model: 'KD1908S',
+    id: 'kd1902-plus',
+    model: 'KD1902+',
+    name: 'Enhanced Vibration Sensor',
+    badge: 'KD1902 Family',
+    img: '/blog-pic/KD1902S.jpg',
+    tag: 'Vibration',
+    tagColor: 'bg-emerald-600',
+    articleHref: '/blog/kd1902-plus',
+    pdfHref: '/downloads/kd1902-plus-datasheet.pdf',
+    intro:
+      'Enhanced KD1902-series variant for demanding mechanical packaging and vibration profiles, with extra tuning margin while staying passive on standby.',
+    specs: [
+      { key: 'Operating Voltage', val: '3.3V-5V' },
+      { key: 'Trigger Direction', val: '360-degree Omni' },
+      { key: 'Response Time', val: '< 5ms' },
+      { key: 'Life Cycles', val: '> 2,000,000' },
+      { key: 'Package', val: 'SMD 3.5 x 2.5mm' },
+      { key: 'Operating Temp', val: '-40C to +85C' },
+      { key: 'Compliance', val: 'RoHS' },
+      { key: 'Note', val: 'See datasheet vs KD1902' },
+    ],
+    features: ['KD1902 platform', 'Enhanced margin', 'SMD Package', 'RoHS', 'IoT Wake-up'],
+    applications: ['Harsh packaging', 'Logistics tags', 'TPMS', 'Security', 'Wearables'],
+  },
+  {
+    id: 'kd1908',
+    model: 'KD1908',
     name: 'Tilt & Angle Sensor',
     badge: 'Micro-amp',
     img: '/blog-pic/HS1908.jpg',
     tag: 'Tilt & Angle',
     tagColor: 'bg-blue-600',
-    articleHref: '/blog/kd1908s',
+    articleHref: '/blog/kd1908',
+    pdfHref: '/downloads/kd1908-datasheet.pdf',
     intro:
       'Ultra-low power tilt detection with micro-ampere standby current and precise angular response for always-on consumer devices and safety shutoff applications.',
     specs: [
@@ -134,7 +160,7 @@ const PRODUCTS = [
     tag: 'Long-Life',
     tagColor: 'bg-orange-600',
     articleHref: '/blog/kd1912',
-    pdfHref: '/downloads/kd1912s-datasheet.pdf',
+    pdfHref: '/downloads/kd1912-datasheet.pdf',
     intro:
       'A durable sensor built for high-cycle industrial and automotive use, with 5M+ trigger cycles and stable sensitivity.',
     specs: [
@@ -149,6 +175,31 @@ const PRODUCTS = [
     ],
     features: ['5M+ Life Cycles', 'High-Temp Body', 'SMD Package', 'RoHS', 'Industrial Grade'],
     applications: ['Automotive TPMS', 'Industrial Automation', 'Heavy Machinery', 'High-cycle IoT', 'Conveyor Systems'],
+  },
+  {
+    id: 'kd1911h',
+    model: 'KD1911H',
+    name: 'High-Sensitivity Vibration Sensor',
+    badge: 'Compact H-Series',
+    img: '/blog-pic/HS1912.jpg',
+    tag: 'Vibration',
+    tagColor: 'bg-amber-600',
+    articleHref: '/blog/kd1911h',
+    pdfHref: '/downloads/kd1911h-datasheet.pdf',
+    intro:
+      'High-sensitivity passive vibration switch for compact PCBs and battery-powered wake-up where every millimeter and micro-amp counts.',
+    specs: [
+      { key: 'Operating Voltage', val: '3.3V-5V' },
+      { key: 'Trigger Direction', val: '360-degree Omni' },
+      { key: 'Response Time', val: '< 5ms' },
+      { key: 'Standby', val: 'Passive (sensor)' },
+      { key: 'Package', val: 'SMD' },
+      { key: 'Operating Temp', val: '-40C to +85C' },
+      { key: 'Compliance', val: 'RoHS' },
+      { key: 'Ideal For', val: 'Compact IoT wake-up' },
+    ],
+    features: ['High sensitivity', 'Compact SMD', 'RoHS', 'Passive standby', 'Wake trigger'],
+    applications: ['Anti-tamper', 'Portable devices', 'Asset tags', 'Smart peripherals', 'Industrial telemetry'],
   },
   {
     id: 'kd1901s',

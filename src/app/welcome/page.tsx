@@ -33,10 +33,12 @@ const BENEFITS = [
 ]
 
 const PRODUCTS = [
-  { model: 'KD1902S', type: 'Vibration Sensor', badge: '360° Omni', img: '/blog-pic/KD1902S.jpg', color: 'bg-green-600' },
-  { model: 'KD1908S', type: 'Tilt & Angle Sensor', badge: 'Micro-amp', img: '/blog-pic/KD1908S-blog.jpg', color: 'bg-blue-600' },
+  { model: 'KD1902', type: 'Vibration Sensor', badge: '360° Omni', img: '/blog-pic/KD1902S.jpg', color: 'bg-green-600' },
+  { model: 'KD1902+', type: 'Enhanced Vibration', badge: 'KD1902+', img: '/blog-pic/KD1902S.jpg', color: 'bg-emerald-700' },
+  { model: 'KD1908', type: 'Tilt & Angle Sensor', badge: 'Micro-amp', img: '/blog-pic/KD1908S-blog.jpg', color: 'bg-blue-600' },
   { model: 'KD1918S', type: 'Optical Tilt Sensor', badge: '360° Detection', img: '/blog-pic/KD1918S.jpg', color: 'bg-violet-600' },
   { model: 'KD1912', type: 'Long-Life Sensor', badge: '5M Cycles', img: '/blog-pic/HS1912.jpg', color: 'bg-orange-600' },
+  { model: 'KD1911H', type: 'High-Sensitivity', badge: 'H-Series', img: '/blog-pic/HS1912.jpg', color: 'bg-amber-600' },
   { model: 'KD1901S', type: 'Low Power Sensor', badge: 'nA Standby', img: '/blog-pic/KD1901S.jpg', color: 'bg-teal-600' },
 ]
 

@@ -20,18 +20,25 @@ export const BLOG_METADATA = {
 		path: "/blog/how-vibration-sensors-extend-iot-battery-life",
 		image: "/blog-pic/vibration-iot-intro.jpeg",
 	},
-	kd1902s: {
-		title: "KD1902S: The 2-Million-Cycle Vibration Sensor for Industrial IoT Reliability | Kingdta Blog",
+	kd1902: {
+		title: "KD1902: The 2-Million-Cycle Vibration Sensor for Industrial IoT Reliability | Kingdta Blog",
 		description:
-			"In the lifecycle of a deployed IoT device, the sensor is often the mechanical weak point. The KD1902S is engineered to change that.",
-		path: "/blog/kd1902s",
+			"In the lifecycle of a deployed IoT device, the sensor is often the mechanical weak point. The KD1902 is engineered to change that.",
+		path: "/blog/kd1902",
 		image: "/blog-pic/KD1902S.jpg",
 	},
-	kd1908s: {
-		title: "Mastering Motion: The KD1908S SMD Angle Sensor for Precise Tilt Detection | Kingdta Blog",
+	"kd1902-plus": {
+		title: "KD1902+: Enhanced Omnidirectional Vibration Sensor for Demanding Wake-Up Applications | Kingdta Blog",
+		description:
+			"KD1902+ builds on the KD1902 platform with additional tuning margin for challenging mechanical environments while keeping passive, ultra-low standby behavior.",
+		path: "/blog/kd1902-plus",
+		image: "/blog-pic/KD1902S.jpg",
+	},
+	kd1908: {
+		title: "Mastering Motion: The KD1908 SMD Angle Sensor for Precise Tilt Detection | Kingdta Blog",
 		description:
 			"In the world of smart electronics, knowing the position of a device is just as important as knowing its location.",
-		path: "/blog/kd1908s",
+		path: "/blog/kd1908",
 		image: "/blog-pic/HS1908.jpg",
 	},
 	kd1918s: {
@@ -47,6 +54,13 @@ export const BLOG_METADATA = {
 			"For industrial asset trackers, automotive safety systems, or smart meters installed for a decade, you need components that refuse to quit.",
 		path: "/blog/kd1912",
 		image: "/blog-pic/KD1912S.jpg",
+	},
+	kd1911h: {
+		title: "KD1911H: High-Sensitivity Vibration Sensor for Compact IoT Wake-Up | Kingdta Blog",
+		description:
+			"KD1911H targets space-constrained designs that still need dependable vibration-triggered wake-up with passive switching and straightforward MCU integration.",
+		path: "/blog/kd1911h",
+		image: "/blog-pic/HS1912.jpg",
 	},
 	kd1901s: {
 		title: "KD1901S: Extending IoT Battery Life with Nano-Ampere Motion Wake-Up | Kingdta Blog",

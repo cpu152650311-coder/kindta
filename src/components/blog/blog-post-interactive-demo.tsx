@@ -47,7 +47,7 @@ export default function BlogPostInteractiveDemo({ slug }: { slug: string }) {
 		scopeTimerRef.current = setTimeout(() => setScopeActive(false), 2000);
 	};
 
-	if (slug === "kd1902s") {
+	if (slug === "kd1902" || slug === "kd1902-plus") {
 		return (
 			<div className="my-10 bg-gray-950 rounded-2xl p-6 text-white">
 				<p className="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">
@@ -70,7 +70,7 @@ export default function BlogPostInteractiveDemo({ slug }: { slug: string }) {
 							/>
 						</div>
 						<span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400">
-							KD1902S
+							{slug === "kd1902-plus" ? "KD1902+" : "KD1902"}
 						</span>
 					</div>
 					<div className="flex-1 space-y-3">

@@ -1,17 +1,26 @@
 export const SENSOR_PRODUCTS = [
 	{
-		name: "KD1902S Omni-directional Vibration Sensor",
-		sku: "KD1902S",
-		path: "/sensor-modules#kd1902s",
+		name: "KD1902 Omni-directional Vibration Sensor",
+		sku: "KD1902",
+		path: "/sensor-modules#kd1902",
 		image: "/blog-pic/KD1902S.jpg",
 		description:
 			"Industry-leading omnidirectional vibration sensing with a proven 2M+ cycle lifespan for smart security, IoT wake-up triggers, and TPMS applications.",
 		category: "Vibration Sensor",
 	},
 	{
-		name: "KD1908S Tilt & Angle Sensor",
-		sku: "KD1908S",
-		path: "/sensor-modules#kd1908s",
+		name: "KD1902+ Enhanced Omnidirectional Vibration Sensor",
+		sku: "KD1902+",
+		path: "/sensor-modules#kd1902-plus",
+		image: "/blog-pic/KD1902S.jpg",
+		description:
+			"Enhanced variant of the KD1902 family for demanding mechanical environments, with additional tuning margin while keeping passive ultra-low standby behavior.",
+		category: "Vibration Sensor",
+	},
+	{
+		name: "KD1908 Tilt & Angle Sensor",
+		sku: "KD1908",
+		path: "/sensor-modules#kd1908",
 		image: "/blog-pic/HS1908.jpg",
 		description:
 			"Ultra-low power tilt detection with micro-ampere standby current and precise angular response for always-on consumer devices and safety shutoff applications.",
@@ -33,6 +42,15 @@ export const SENSOR_PRODUCTS = [
 		image: "/blog-pic/HS1912.jpg",
 		description:
 			"A durable sensor built for high-cycle industrial and automotive use, with 5M+ trigger cycles and stable sensitivity.",
+		category: "Vibration Sensor",
+	},
+	{
+		name: "KD1911H High-Sensitivity Vibration Sensor",
+		sku: "KD1911H",
+		path: "/sensor-modules#kd1911h",
+		image: "/blog-pic/HS1912.jpg",
+		description:
+			"Compact high-sensitivity vibration switch for battery-powered wake-up, anti-tamper, and space-constrained IoT hardware.",
 		category: "Vibration Sensor",
 	},
 	{

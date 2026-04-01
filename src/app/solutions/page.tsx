@@ -103,8 +103,8 @@ const INDUSTRIES = [
       { name: 'Asset Management Tags', detail: 'Motion detection for theft prevention and shipment tracking' },
       { name: 'Anti-theft Alarms', detail: 'Precision vibration sensitivity to eliminate false alarms' },
     ],
-    products: ['KD1902S', 'KD1908S', 'KD1912'],
-    caseStudy: 'A smart lock manufacturer reduced false alarm rates by 90% after integrating our KD1902S with custom sensitivity tuning for door-impact vs. actual break-in scenarios.',
+    products: ['KD1902', 'KD1902+', 'KD1908', 'KD1912'],
+    caseStudy: 'A smart lock manufacturer reduced false alarm rates by 90% after integrating our KD1902 family with custom sensitivity tuning for door-impact vs. actual break-in scenarios.',
   },
   {
     title: 'Consumer Electronics',
@@ -119,7 +119,7 @@ const INDUSTRIES = [
       { name: 'Remote Controls', detail: 'Motion-activated backlight and smart sleep modes' },
       { name: 'Smart Toys', detail: 'Interactive tilt and shake gesture recognition' },
     ],
-    products: ['KD1901S', 'KD1908S'],
+    products: ['KD1901S', 'KD1908'],
     caseStudy: 'An IoT device company extended the standby time of its asset tracker by 40% using our KD1901S nanoamp motion wake-up sensor, without changing the battery or enclosure design.',
   },
   {
@@ -135,8 +135,8 @@ const INDUSTRIES = [
       { name: 'Electric Vehicle Locks', detail: 'Approach detection for automatic lock/unlock triggers' },
       { name: 'Vehicle Security', detail: 'Multi-axis vibration detection for intrusion monitoring' },
     ],
-    products: ['KD1902S', 'KD1912'],
-    caseStudy: 'Our KD1902S is deployed in TPMS modules across multiple OEM vehicle lines, providing reliable wake-up triggering from 0C to 85C without signal drift.',
+    products: ['KD1902', 'KD1912'],
+    caseStudy: 'Our KD1902 is deployed in TPMS modules across multiple OEM vehicle lines, providing reliable wake-up triggering from 0C to 85C without signal drift.',
   },
   {
     title: 'Automation & Robotics',
@@ -151,7 +151,7 @@ const INDUSTRIES = [
       { name: 'Conveyor Monitoring', detail: 'Vibration anomaly detection for predictive maintenance' },
       { name: 'AGV Systems', detail: 'Inclination sensing for terrain-adaptive navigation' },
     ],
-    products: ['KD1908S', 'KD1918S', 'KD1902S'],
+    products: ['KD1908', 'KD1918S', 'KD1902'],
     caseStudy: 'An industrial power tool OEM integrated our tilt sensor for automatic shutoff, reducing product liability incidents by implementing directional cutoff under 15-degree tilt angle.',
   },
 ]
@@ -592,8 +592,10 @@ export default function SolutionsPage() {
                 <p className="text-white font-semibold text-sm mb-4">Products</p>
                 <ul className="space-y-2">
                   {[
-                    ['KD1902S Vibration Sensor', '/blog/kd1902s'],
-                    ['KD1908S Angle Sensor', '/blog/kd1908s'],
+                    ['KD1902 Vibration Sensor', '/blog/kd1902'],
+                    ['KD1902+ Enhanced', '/blog/kd1902-plus'],
+                    ['KD1908 Angle Sensor', '/blog/kd1908'],
+                    ['KD1911H High-Sensitivity', '/blog/kd1911h'],
                     ['KD1918S Optical Tilt', '/blog/kd1918s'],
                     ['KD1912 (5M Cycles)', '/blog/kd1912'],
                     ['KD1901S Low Power', '/blog/kd1901s'],

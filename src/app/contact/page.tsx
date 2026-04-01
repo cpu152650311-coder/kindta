@@ -516,7 +516,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-white font-semibold text-sm mb-4">Products</p>
                 <ul className="space-y-2">
-                  {['KD1902S Vibration Sensor', 'KD1908S Angle Sensor', 'KD1918S Optical Tilt', 'KD1912 (5M Cycles)', 'KD1901S Ultra Low Power'].map(l => (
+                  {['KD1902 Vibration Sensor', 'KD1902+ Enhanced', 'KD1908 Angle Sensor', 'KD1911H High-Sensitivity', 'KD1918S Optical Tilt', 'KD1912 (5M Cycles)', 'KD1901S Ultra Low Power'].map(l => (
                     <li key={l}><a href="/#products" className="text-gray-400 hover:text-green-400 text-sm transition-colors">{l}</a></li>
                   ))}
                 </ul>

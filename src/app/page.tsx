@@ -92,7 +92,7 @@ const SERVICES = [
 
 const PRODUCTS = [
   {
-    model: 'KD1902S',
+    model: 'KD1902',
     name: 'Vibration Sensor',
     badge: '2M Cycle Life',
     img: '/blog-pic/KD1902S.jpg',
@@ -102,7 +102,17 @@ const PRODUCTS = [
     applications: ['Smart Security', 'TPMS Wake-up', 'Wearables', 'Asset Trackers'],
   },
   {
-    model: 'KD1908S',
+    model: 'KD1902+',
+    name: 'Enhanced Vibration',
+    badge: 'KD1902 Family',
+    img: '/blog-pic/KD1902S.jpg',
+    specs: ['360° Omni', 'Passive standby', 'Tuning margin', 'IoT Ready'],
+    desc: 'Enhanced KD1902-series option for harsh packaging and vibration profiles—extra design margin with the same passive wake-up philosophy.',
+    color: '#15803d',
+    applications: ['Logistics Tags', 'TPMS', 'Security', 'Wearables'],
+  },
+  {
+    model: 'KD1908',
     name: 'Angle Sensor',
     badge: 'High Precision',
     img: '/blog-pic/HS1908.jpg',
@@ -234,7 +244,7 @@ const BLOGS = [
     title: 'KD1902: The 2-Million-Cycle Vibration Sensor for Industrial IoT Reliability',
     tag: 'Application',
     img: '/blog-pic/KD1902S.jpg',
-    href: '/blog/kd1902s',
+    href: '/blog/kd1902',
   },
 ]
 
@@ -522,11 +532,11 @@ export default function KingdtaPage() {
               {/* Floating product card */}
               <div className="absolute -bottom-6 -right-4 lg:-right-6 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 w-52">
                 <p className="text-xs text-gray-400 font-medium mb-1">Featured Product</p>
-                <p className="text-gray-900 font-bold text-sm mb-2">KD1902S</p>
+                <p className="text-gray-900 font-bold text-sm mb-2">KD1902</p>
                 <div className="w-full bg-black rounded-lg mb-2 overflow-hidden">
                   <Image
                     src="/blog-pic/KD1902S.jpg"
-                    alt="KD1902S"
+                    alt="KD1902"
                     width={640}
                     height={480}
                     sizes="208px"
@@ -998,8 +1008,10 @@ export default function KingdtaPage() {
                 <p className="text-white font-semibold text-sm mb-4">Products</p>
                 <ul className="space-y-2">
                   {[
-                    ['KD1902S Vibration Sensor', '/blog/kd1902s'],
-                    ['KD1908S Angle Sensor', '/blog/kd1908s'],
+                    ['KD1902 Vibration Sensor', '/blog/kd1902'],
+                    ['KD1902+ Enhanced', '/blog/kd1902-plus'],
+                    ['KD1908 Angle Sensor', '/blog/kd1908'],
+                    ['KD1911H High-Sensitivity', '/blog/kd1911h'],
                     ['KD1918S Optical Tilt', '/blog/kd1918s'],
                     ['KD1912 (5M Cycles)', '/blog/kd1912'],
                     ['KD1901S Low Power', '/blog/kd1901s'],

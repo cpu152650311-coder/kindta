@@ -38,6 +38,26 @@ const config = {
         destination: "/blog/bd4104b-c01-blind-spot-detection-radar-ebike-safety",
         permanent: true,
       },
+      {
+        source: "/blog/kd1902s",
+        destination: "/blog/kd1902",
+        permanent: true,
+      },
+      {
+        source: "/blog/kd1908s",
+        destination: "/blog/kd1908",
+        permanent: true,
+      },
+      {
+        source: "/downloads/kd1902s-datasheet.pdf",
+        destination: "/downloads/kd1902-datasheet.pdf",
+        permanent: true,
+      },
+      {
+        source: "/downloads/kd1912s-datasheet.pdf",
+        destination: "/downloads/kd1912-datasheet.pdf",
+        permanent: true,
+      },
     ];
   },
 };
