@@ -39,7 +39,7 @@ export const SENSOR_PRODUCTS = [
 		name: "KD1912 Long-Life Vibration Sensor",
 		sku: "KD1912",
 		path: "/sensor-modules#kd1912",
-		image: "/blog-pic/HS1912.jpg",
+		image: "/blog-pic/HS1912.png",
 		description:
 			"A durable sensor built for high-cycle industrial and automotive use, with 5M+ trigger cycles and stable sensitivity.",
 		category: "Vibration Sensor",
@@ -48,7 +48,7 @@ export const SENSOR_PRODUCTS = [
 		name: "KD1911H High-Sensitivity Vibration Sensor",
 		sku: "KD1911H",
 		path: "/sensor-modules#kd1911h",
-		image: "/blog-pic/HS1912.jpg",
+		image: "/blog-pic/KD1911H.png",
 		description:
 			"Compact high-sensitivity vibration switch for battery-powered wake-up, anti-tamper, and space-constrained IoT hardware.",
 		category: "Vibration Sensor",

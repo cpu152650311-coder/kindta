@@ -53,14 +53,14 @@ export const BLOG_METADATA = {
 		description:
 			"For industrial asset trackers, automotive safety systems, or smart meters installed for a decade, you need components that refuse to quit.",
 		path: "/blog/kd1912",
-		image: "/blog-pic/KD1912S.jpg",
+		image: "/blog-pic/HS1912.png",
 	},
 	kd1911h: {
 		title: "KD1911H: High-Sensitivity Vibration Sensor for Compact IoT Wake-Up | Kingdta Blog",
 		description:
 			"KD1911H targets space-constrained designs that still need dependable vibration-triggered wake-up with passive switching and straightforward MCU integration.",
 		path: "/blog/kd1911h",
-		image: "/blog-pic/HS1912.jpg",
+		image: "/blog-pic/KD1911H.png",
 	},
 	kd1901s: {
 		title: "KD1901S: Extending IoT Battery Life with Nano-Ampere Motion Wake-Up | Kingdta Blog",
