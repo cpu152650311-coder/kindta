@@ -250,8 +250,10 @@ export default function SensorModulesPage() {
   }, [modalOpen])
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '')
-    if (!hash) return
+    const raw = window.location.hash.replace('#', '')
+    if (!raw) return
+    const legacyHash: Record<string, string> = { kd1902s: 'kd1902', kd1908s: 'kd1908' }
+    const hash = legacyHash[raw] ?? raw
     const index = PRODUCTS.findIndex((product) => product.id === hash)
     if (index >= 0) {
       setActiveProduct(index)
