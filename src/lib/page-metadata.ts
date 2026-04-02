@@ -19,7 +19,7 @@ export const PAGE_METADATA = {
 		description:
 			"Browse Kingdta product categories including sensor modules and radar modules for smart hardware, IoT, and industrial applications.",
 		path: "/products",
-		image: "/KD1902S-sensor-modules.png",
+		image: "/blog-pic/HS1912.png",
 		keywords: [
 			"sensor modules",
 			"radar modules",
@@ -32,7 +32,7 @@ export const PAGE_METADATA = {
 		description:
 			"Explore Kingdta sensor modules for vibration, tilt, angle, and optical detection, built for smart hardware, battery-powered IoT devices, and industrial equipment.",
 		path: "/sensor-modules",
-		image: "/KD1902S-sensor-modules.png",
+		image: "/blog-pic/HS1912.png",
 		keywords: [
 			"sensor modules",
 			"vibration sensor",

@@ -23,7 +23,7 @@ const PRODUCT_CATEGORIES = [
     tag: 'Core Line',
     tagColor: 'bg-green-600',
     href: '/sensor-modules',
-    image: '/KD1902S-sensor-modules.png',
+    image: '/blog-pic/HS1912.png',
     intro: 'Passive sensing components for vibration, tilt, angle, and optical detection.',
     summary: 'This category contains our core sensor family and detailed product specs for the main sensor models.',
     bullets: ['Vibration sensors', 'Tilt and angle sensors', 'Optical sensing solutions'],
