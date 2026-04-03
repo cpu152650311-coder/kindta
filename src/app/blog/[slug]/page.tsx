@@ -53,7 +53,17 @@ const BLOG_POSTS: Record<string, {
   pdfLink?: string
   cta1?: { text: string; linkText: string; href: string }
   cta2?: { text: string; linkText: string; href: string }
-  sections: Array<{ type: string; content?: string; src?: string; alt?: string; caption?: string; headers?: string[]; rows?: string[][] }>
+  sections: Array<{
+    type: string
+    content?: string
+    /** 内联链接段落：与站点地图一致，如 /sensor-modules、/sensor-modules#kd1902-plus */
+    segments?: Array<{ text: string; href?: string }>
+    src?: string
+    alt?: string
+    caption?: string
+    headers?: string[]
+    rows?: string[][]
+  }>
 }> = {
   'bd4101a-c04-microwave-radar-module-smart-lighting': {
     slug: 'bd4101a-c04-microwave-radar-module-smart-lighting',
@@ -252,7 +262,13 @@ const BLOG_POSTS: Record<string, {
       { type: 'h2', content: '3. A Different Approach: Motion Wake-Up Sensors' },
       { type: 'paragraph', content: 'Instead of continuously monitoring motion, an alternative is to use a motion wake-up sensor based on vibration detection.' },
       { type: 'paragraph', content: 'This approach allows the system to remain in deep sleep and only wake up when real movement occurs.' },
-      { type: 'paragraph', content: 'A passive vibration sensor on our Sensor Modules line can function as a hardware trigger, generating a signal only when motion is detected—without consuming meaningful standby power. Browse passive vibration switches on the Sensor Modules page linked from this article.' },
+      { type: 'richText', segments: [
+        { text: 'A passive vibration sensor from our ' },
+        { text: 'Sensor Modules', href: '/sensor-modules' },
+        { text: ' family can function as a hardware trigger, generating a signal only when motion is detected—without consuming meaningful standby power. Browse passive vibration switches on the ' },
+        { text: 'Sensor Modules', href: '/sensor-modules' },
+        { text: ' page for model lineup and specs.' },
+      ] },
       { type: 'table', headers: ['Feature', 'Accelerometer', 'Vibration Sensor'], rows: [
         ['Power Consumption', 'Continuous', 'Near Zero'],
         ['MCU Required', 'Yes', 'No'],
@@ -286,14 +302,30 @@ const BLOG_POSTS: Record<string, {
       { type: 'paragraph', content: '• Anti-theft tracking solutions' },
       { type: 'paragraph', content: '• Portable IoT tracking devices' },
       { type: 'h2', content: '8. Recommended Device' },
-      { type: 'paragraph', content: 'One example of a motion wake-up sensor is the KD1902+ omnidirectional vibration sensor, designed for ultra-low-power applications.' },
+      { type: 'richText', segments: [
+        { text: 'One example of a motion wake-up sensor is the ' },
+        { text: 'KD1902+', href: '/sensor-modules#kd1902-plus' },
+        { text: ' omnidirectional vibration sensor, designed for ultra-low-power applications.' },
+      ] },
       { type: 'paragraph', content: 'Key features include: near-zero standby current (~50 nA), passive operation (no power supply required for the sensing element), direct pulse output for MCU wake-up, compact SMD package, and 360° motion detection.' },
-      { type: 'paragraph', content: 'For full electrical, mechanical, and reliability data, download the KD1902+ datasheet from the link below or open the KD1902+ product section on the Sensor Modules page.' },
+      { type: 'richText', segments: [
+        { text: 'For full electrical, mechanical, and reliability data, download the KD1902+ datasheet from the link below, open the ' },
+        { text: 'KD1902+', href: '/sensor-modules#kd1902-plus' },
+        { text: ' section on ' },
+        { text: 'Sensor Modules', href: '/sensor-modules' },
+        { text: ', or read the ' },
+        { text: 'KD1902+ product article', href: '/blog/kd1902-plus' },
+        { text: ' on our blog.' },
+      ] },
       { type: 'h2', content: '9. Conclusion' },
       { type: 'paragraph', content: 'Optimizing power consumption is essential for improving the performance and competitiveness of GPS tracking devices.' },
       { type: 'paragraph', content: 'By replacing continuous motion sensing with a hardware-based motion wake-up sensor, designers can significantly extend battery life while simplifying system architecture.' },
       { type: 'paragraph', content: 'This makes vibration-based wake-up solutions an effective choice for next-generation low power GPS tracker designs.' },
-      { type: 'paragraph', content: 'Looking for a reliable motion wake-up sensor for your GPS tracker design? Feel free to contact us or request samples to evaluate how this solution can improve your device battery performance.' },
+      { type: 'richText', segments: [
+        { text: 'Looking for a reliable motion wake-up sensor for your GPS tracker design? Feel free to ' },
+        { text: 'contact us', href: '/contact' },
+        { text: ' or request samples to evaluate how this solution can improve your device battery performance.' },
+      ] },
     ]
   },
   'kd1902': {
@@ -713,6 +745,21 @@ export default function BlogPostPage({ params: paramsPromise }: { params: Promis
               <article className="lg:col-span-3 prose">
                 {post.sections.map((sec, i) => {
                   if (sec.type === 'h2') return <h2 key={i}>{sec.content}</h2>
+                  if (sec.type === 'richText' && sec.segments?.length) {
+                    return (
+                      <p key={i}>
+                        {sec.segments.map((seg, j) =>
+                          seg.href ? (
+                            <a key={j} href={seg.href} className="text-green-700 font-medium underline underline-offset-2 hover:text-green-600 transition-colors">
+                              {seg.text}
+                            </a>
+                          ) : (
+                            <span key={j}>{seg.text}</span>
+                          )
+                        )}
+                      </p>
+                    )
+                  }
                   if (sec.type === 'paragraph') return <p key={i}>{sec.content}</p>
                   if (sec.type === 'image') return (
                     <figure key={i} className="my-8">
