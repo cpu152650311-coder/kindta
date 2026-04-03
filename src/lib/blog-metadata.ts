@@ -20,6 +20,13 @@ export const BLOG_METADATA = {
 		path: "/blog/how-vibration-sensors-extend-iot-battery-life",
 		image: "/blog-pic/vibration-iot-intro.jpeg",
 	},
+	"low-power-gps-tracker-motion-wakeup": {
+		title: "Low Power GPS Tracker Design | Motion Wake-Up Sensor Solution | Kingdta Blog",
+		description:
+			"Learn how motion wake-up sensors reduce power consumption in GPS trackers. Improve battery life with ultra-low-power vibration sensor solutions.",
+		path: "/blog/low-power-gps-tracker-motion-wakeup",
+		image: "/blog-pic/gps-motion-wakeup-intro.png",
+	},
 	kd1902: {
 		title: "KD1902: The 2-Million-Cycle Vibration Sensor for Industrial IoT Reliability | Kingdta Blog",
 		description:

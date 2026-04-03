@@ -22,6 +22,18 @@ export const BLOG_CATEGORIES = [
 
 export const BLOG_LIST_POSTS = [
 	{
+		slug: "low-power-gps-tracker-motion-wakeup",
+		title: "How to Reduce GPS Tracker Power Consumption with Motion Wake-Up Sensors",
+		excerpt:
+			"Explore how vibration-based motion wake-up sensors help reduce power consumption in GPS trackers and improve battery life with a simpler hardware design.",
+		date: "Apr 3, 2026",
+		readTime: "9 min read",
+		category: "Application Guide",
+		cover: "/blog-pic/gps-motion-wakeup-intro.png",
+		tags: ["GPS Tracker", "KD1902+", "Motion Wake-Up"],
+		featured: true,
+	},
+	{
 		slug: "how-vibration-sensors-extend-iot-battery-life",
 		title: "How Vibration Sensors Extend IoT Battery Life",
 		excerpt:
@@ -31,7 +43,7 @@ export const BLOG_LIST_POSTS = [
 		category: "Application Guide",
 		cover: "/blog-pic/vibration-iot-intro.jpeg",
 		tags: ["IoT", "Battery Life", "Vibration Sensor"],
-		featured: true,
+		featured: false,
 	},
 	{
 		slug: "bd4101a-c04-microwave-radar-module-smart-lighting",
